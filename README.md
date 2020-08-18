@@ -52,3 +52,6 @@
         <td><a style="text-decoration: none;" href="#" target="_blank"><strong>Web前端Vue.js学习项目(规划中、含笔记)</strong></a></td>
     </tr>
 </table>
+
+### 感言
+    学无止境，加油！
