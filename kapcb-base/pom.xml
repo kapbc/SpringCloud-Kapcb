@@ -33,78 +33,151 @@
         <spring-boot-starter-jdbc.version>2.3.11.RELEASE</spring-boot-starter-jdbc.version>
         <spring-boot-starter-data-redis.version>2.3.11.RELEASE</spring-boot-starter-data-redis.version>
         <spring-tx.version>5.2.15.RELEASE</spring-tx.version>
+        <javax-servlet-api.version>4.0.1</javax-servlet-api.version>
         <mysql-connector-java.version>8.0.24</mysql-connector-java.version>
         <mybatis-plus-boot-starter.version>3.4.3</mybatis-plus-boot-starter.version>
         <dynamic-datasource-spring-boot-starter.version>3.4.3</dynamic-datasource-spring-boot-starter.version>
         <commons-pool2.version>2.9.0</commons-pool2.version>
+        <commons-collections.version>3.2.2</commons-collections.version>
+        <lombok.version>1.18.20</lombok.version>
+        <hutool-all.version>5.6.2</hutool-all.version>
+        <fastjson.version>1.2.58</fastjson.version>
+        <orika-core.version>1.5.4</orika-core.version>
+        <xxl-job-core.version>2.3.0</xxl-job-core.version>
+        <vavr.version>1.0.0-alpha-3</vavr.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <!-- spring cloud dependencies -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>${spring-cloud-dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
+            <!-- spring cloud alibaba dependencies -->
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
                 <version>${spring-cloud-alibaba-dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
+            <!-- spring cloud openfeign -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-openfeign</artifactId>
                 <version>${spring-cloud-starter-openfeign.version}</version>
             </dependency>
+            <!-- spring cloud loadbalancer -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-loadbalancer</artifactId>
                 <version>${spring-cloud-starter-loadbalancer.version}</version>
             </dependency>
+            <!-- spring cloud hystrix -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
                 <version>${spring-cloud-starter-netflix-hystrix.version}</version>
             </dependency>
+            <!-- spring boot auto configuration -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-autoconfigure</artifactId>
                 <version>${spring-boot-autoconfigure.version}</version>
             </dependency>
+            <!-- spring boot jdbc -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-jdbc</artifactId>
                 <version>${spring-boot-starter-jdbc.version}</version>
             </dependency>
+            <!-- spring boot redis -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-data-redis</artifactId>
                 <version>${spring-boot-starter-data-redis.version}</version>
             </dependency>
+            <!-- spring tx -->
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-tx</artifactId>
                 <version>${spring-tx.version}</version>
             </dependency>
+            <!-- javax servlet api -->
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax-servlet-api</artifactId>
+                <version>${javax-servlet-api.version}</version>
+            </dependency>
+            <!-- mysql connector java -->
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql-connector-java.version}</version>
             </dependency>
-            <dependency>
-                <groupId>com.baomidou</groupId>
-                <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
-                <version>${dynamic-datasource-spring-boot-starter.version}</version>
-            </dependency>
+            <!-- mybatis plus -->
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis-plus-boot-starter.version}</version>
             </dependency>
+            <!-- mybatis plus dynamic datasource -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+                <version>${dynamic-datasource-spring-boot-starter.version}</version>
+            </dependency>
+            <!-- commons pool2 -->
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-pool2</artifactId>
                 <version>${commons-pool2.version}</version>
+            </dependency>
+            <!-- commons collections -->
+            <dependency>
+                <groupId>commons-collections</groupId>
+                <artifactId>commons-collections</artifactId>
+                <version>${commons-collections.version}</version>
+            </dependency>
+            <!-- lombok -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+            <!-- hutool all -->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool-all.version}</version>
+            </dependency>
+            <!-- fastjson -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+            <!-- orika core -->
+            <dependency>
+                <groupId>ma.glasnost.orika</groupId>
+                <artifactId>orika-core</artifactId>
+                <version>${orika-core.version}</version>
+            </dependency>
+            <!-- xxl job core -->
+            <dependency>
+                <groupId>com.xuxueli</groupId>
+                <artifactId>xxl-job-core</artifactId>
+                <version>${xxl-job-core.version}</version>
+            </dependency>
+            <!-- vavr -->
+            <dependency>
+                <groupId>io.vavr</groupId>
+                <artifactId>vavr</artifactId>
+                <version>${vavr.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
