@@ -30,6 +30,13 @@
         <spring-cloud-starter-netflix-hystrix.version>2.2.8.RELEASE</spring-cloud-starter-netflix-hystrix.version>
         <spring-boot-autoconfigure.version>2.3.11.RELEASE</spring-boot-autoconfigure.version>
         <spring-boot-starter-jdbc.version>2.3.11.RELEASE</spring-boot-starter-jdbc.version>
+        <spring-boot-starter-jdbc.version>2.3.11.RELEASE</spring-boot-starter-jdbc.version>
+        <spring-boot-starter-data-redis.version>2.3.11.RELEASE</spring-boot-starter-data-redis.version>
+        <spring-tx.version>5.2.15.RELEASE</spring-tx.version>
+        <mysql-connector-java.version>8.0.24</mysql-connector-java.version>
+        <mybatis-plus-boot-starter.version>3.4.3</mybatis-plus-boot-starter.version>
+        <dynamic-datasource-spring-boot-starter.version>3.4.3</dynamic-datasource-spring-boot-starter.version>
+        <commons-pool2.version>2.9.0</commons-pool2.version>
     </properties>
 
     <dependencyManagement>
@@ -67,7 +74,37 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-jdbc</artifactId>
-                <version>2.3.11.RELEASE</version>
+                <version>${spring-boot-starter-jdbc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>${spring-boot-starter-data-redis.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-tx</artifactId>
+                <version>${spring-tx.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector-java.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+                <version>${dynamic-datasource-spring-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-pool2</artifactId>
+                <version>${commons-pool2.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
