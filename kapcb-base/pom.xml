@@ -17,26 +17,39 @@
     </parent>
 
     <properties>
+        <!-- base start -->
         <java.version>1.8</java.version>
         <resource.delimiter>@</resource.delimiter>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <!-- base end -->
+        <!-- spring cloud start -->
         <spring-cloud-dependencies.version>Hoxton.SR11</spring-cloud-dependencies.version>
         <spring-cloud-alibaba-dependencies.version>2.2.5.RELEASE</spring-cloud-alibaba-dependencies.version>
         <spring-cloud-starter-openfeign.version>2.2.8.RELEASE</spring-cloud-starter-openfeign.version>
         <spring-cloud-starter-loadbalancer.version>2.2.8.RELEASE</spring-cloud-starter-loadbalancer.version>
         <spring-cloud-starter-netflix-hystrix.version>2.2.8.RELEASE</spring-cloud-starter-netflix-hystrix.version>
+        <!-- spring cloud end -->
+        <!-- spring boot start -->
         <spring-boot-autoconfigure.version>2.3.11.RELEASE</spring-boot-autoconfigure.version>
         <spring-boot-starter-jdbc.version>2.3.11.RELEASE</spring-boot-starter-jdbc.version>
         <spring-boot-starter-jdbc.version>2.3.11.RELEASE</spring-boot-starter-jdbc.version>
         <spring-boot-starter-data-redis.version>2.3.11.RELEASE</spring-boot-starter-data-redis.version>
+        <!-- spring boot end -->
+        <!-- spring start -->
         <spring-tx.version>5.2.15.RELEASE</spring-tx.version>
+        <!-- spring end -->
+        <!-- java start -->
         <javax-servlet-api.version>4.0.1</javax-servlet-api.version>
+        <!-- java end -->
+        <!-- mysql start -->
         <mysql-connector-java.version>8.0.24</mysql-connector-java.version>
         <mybatis-plus-boot-starter.version>3.4.3</mybatis-plus-boot-starter.version>
         <dynamic-datasource-spring-boot-starter.version>3.4.3</dynamic-datasource-spring-boot-starter.version>
+        <!-- mysql end -->
+        <!-- commons start -->
         <commons-pool2.version>2.9.0</commons-pool2.version>
         <commons-collections.version>3.2.2</commons-collections.version>
         <lombok.version>1.18.20</lombok.version>
@@ -45,6 +58,7 @@
         <orika-core.version>1.5.4</orika-core.version>
         <xxl-job-core.version>2.3.0</xxl-job-core.version>
         <vavr.version>1.0.0-alpha-3</vavr.version>
+        <!-- commons end -->
     </properties>
 
     <dependencyManagement>
@@ -182,5 +196,112 @@
         </dependencies>
     </dependencyManagement>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ma.glasnost.orika</groupId>
+            <artifactId>orika-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.vavr</groupId>
+            <artifactId>vavr</artifactId>
+        </dependency>
 
+
+        <dependency>
+            <groupId>com.xuxueli</groupId>
+            <artifactId>xxl-job-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-dependencies</artifactId>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+        <!-- spring cloud alibaba dependencies -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+        <!-- spring cloud openfeign -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <!-- spring cloud loadbalancer -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+        </dependency>
+        <!-- spring cloud hystrix -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+        </dependency>
+
+
+        <!-- javax servlet api -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax-servlet-api</artifactId>
+        </dependency>
+        <!-- mybatis plus dynamic datasource -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+        </dependency>
+    </dependencies>
+
+    <!-- maven repositories address start -->
+    <repositories>
+        <repository>
+            <id>kapcb-public</id>
+            <url>http://192.168.80.135:8888/repository/maven-public/</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>kapcb-public</id>
+            <url>http://192.168.80.135:8888/repository/maven-public/</url>
+        </pluginRepository>
+    </pluginRepositories>
+    <!-- maven repositories address end -->
+
+    <!-- deploy private nexus server start -->
+    <distributionManagement>
+        <!-- releases version start -->
+        <repository>
+            <id>kapcb-releases</id>
+            <url>http://192.168.80.135:8888/repository/maven-releases/</url>
+        </repository>
+        <!-- releases version end -->
+        <!-- snapshots version start -->
+        <snapshotRepository>
+            <id>kapcb-snapshots</id>
+            <url>http://192.168.80.135:8888/repository/maven-snapshots/</url>
+        </snapshotRepository>
+        <!-- snapshots version end -->
+    </distributionManagement>
+    <!-- deploy private nexus server end -->
 </project>
