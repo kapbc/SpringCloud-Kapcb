@@ -1,5 +1,7 @@
 package com.kapcb.ccc.model.base;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,9 +22,13 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@ApiModel(value = "分页", description = "分页")
 public class BasePagination implements Serializable {
 
+    @ApiModelProperty(value = "页数(默认值为1)", required = true)
     private int pageNum = 1;
+
+    @ApiModelProperty(value = "每页显示条数(默认值为10)", required = true)
     private int pageSize = 10;
 
 }
