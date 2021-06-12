@@ -1,4 +1,7 @@
-package com.kapcb.ccc.commons.configuration;
+package com.kapcb.ccc.configuration;
+
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * <a>Title: RedisConfiguration </a>
@@ -9,5 +12,7 @@ package com.kapcb.ccc.commons.configuration;
  * @version 1.0.0
  * @date 2021/6/12 0:37
  */
+@Slf4j
+@Configuration
 public class RedisConfiguration {
 }
