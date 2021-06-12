@@ -1,4 +1,4 @@
-package com.kapcb.ccc.constants;
+package com.kapcb.ccc.constants.pattern;
 
 /**
  * <a>Title: DatePattern </a>
@@ -7,7 +7,7 @@ package com.kapcb.ccc.constants;
  *
  * @author Kapcb
  * @version 1.0.0
- * @date 2021/6/12 22:23
+ * @date 2021/6/12 23:13
  */
 public class DatePattern {
 }

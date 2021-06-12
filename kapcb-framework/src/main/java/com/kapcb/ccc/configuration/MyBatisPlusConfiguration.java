@@ -37,5 +37,9 @@ public class MyBatisPlusConfiguration {
         return mybatisPlusInterceptor;
     }
 
-    public MybatisPlusSqlInjector mybatisPlusSqlInjector
+    @Bean
+    public MybatisPlusSqlInjector mybatisPlusSqlInjector(){
+        // 自定义注入器 实现自定义方法注入
+        return new MybatisPlusSqlInjector();
+    }
 }
