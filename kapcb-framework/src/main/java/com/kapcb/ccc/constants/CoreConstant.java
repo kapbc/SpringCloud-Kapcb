@@ -1,5 +1,10 @@
 package com.kapcb.ccc.constants;
 
+import com.baomidou.mybatisplus.core.toolkit.StringPool;
+import org.springframework.lang.NonNull;
+
+import java.math.BigDecimal;
+
 /**
  * <a>Title: CoreConstant </a>
  * <a>Author: Kapcb <a>
@@ -11,55 +16,52 @@ package com.kapcb.ccc.constants;
  */
 public class CoreConstant {
 
-    /**
-     * 分号
-     */
-    public static final String SEMICOLON = ";";
+    public enum StringPool {
 
-    /**
-     * 逗号
-     */
-    public static final String COMMA = ",";
+    }
 
-    /**
-     * 空字符串
-     */
-    public static final String EMPTY_STRING = "";
+    public enum IntegerPool {
 
-    /**
-     * 空格
-     */
-    public static final String SPACE = " ";
+        SEMICOLON(";", "分号"),
+        COLON(":", "冒号"),
+        COMMA(",", "逗号"),
+        SPACE(" ", "空格"),
+        SPACE_COMMA(" ,", "空格逗号"),
+        EMPTY_STRING("", "空字符串"),
+        SINGLE_QUOTES("'", "单引号"),
 
-    /**
-     * 正序
-     */
-    public static final String ASC = "ASC";
+        SQL_ORDER("ORDER", "SQL排序"),
+        SQL_ACS("ASC", "SQL正序"),
+        SQL_DESC("DESC", "SQL倒序"),
+        SQL_LIMIT("LIMIT ", "SQL限定数量"),
+        ;
 
-    /**
-     * 倒序
-     */
-    public static final String DESC = "DESC";
+        private String value;
+        private String description;
 
-    /**
-     * sql limit one
-     */
-    public static final String LIMIT_ONE = "LIMIT 1";
+        IntegerPool(String value, String description) {
+            this.value = value;
+            this.description = description;
+        }
 
-    /**
-     * 当前页数
-     */
-    public static final String PAGE_NUM = "pageNum";
+        @NonNull
+        public String value() {
+            return this.value;
+        }
+    }
 
-    /**
-     * 每页记录数
-     */
-    public static final String PAGE_SIZE = "pageSize";
+    public enum LongPool {
 
-    /**
-     * 排序
-     */
-    public static final String ORDERS = "orders";
+    }
+
+    public enum DoublePool {
+
+    }
+
+    public enum BigDecimalPool {
+
+    }
+    
 
     /**
      * 横杠

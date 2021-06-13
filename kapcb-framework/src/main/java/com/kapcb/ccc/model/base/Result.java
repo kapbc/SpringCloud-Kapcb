@@ -52,26 +52,66 @@ public class Result<T> implements Serializable {
 
     @NonNull
     public static <T> Result<T> success() {
-        return new Result<T>(ResultCodeEnum.SUCCESS, null);
+        return new Result<>(ResultCodeEnum.SUCCESS, null);
     }
 
     @NonNull
-    public static <T> Result<T> success(T data){
-        return new Result<T>(ResultCodeEnum.SUCCESS, data);
+    public static <T> Result<T> success(T data) {
+        return new Result<>(ResultCodeEnum.SUCCESS, data);
     }
 
     @NonNull
-    public static <T> Result<T> success(String message){
-        return new Result<T>(ResultCodeEnum.SUCCESS.getCode(), message, null);
+    public static <T> Result<T> success(String message) {
+        return new Result<>(ResultCodeEnum.SUCCESS.getCode(), message, null);
     }
 
     @NonNull
-    public static <T> Result<T> success(String message,T data){
-        return new Result<T>(ResultCodeEnum.SUCCESS.getCode(), message, data);
+    public static <T> Result<T> success(String message, T data) {
+        return new Result<>(ResultCodeEnum.SUCCESS.getCode(), message, data);
     }
 
-    public static <T> Result<T> fail(){
-        
+    @NonNull
+    public static <T> Result<T> fail() {
+        return new Result<>(ResultCodeEnum.FAIL, null);
+    }
+
+    @NonNull
+    public static <T> Result<T> fail(T data) {
+        return new Result<>(ResultCodeEnum.FAIL, data);
+    }
+
+    @NonNull
+    public static <T> Result<T> fail(String message) {
+        return new Result<>(ResultCodeEnum.FAIL.getCode(), message, null);
+    }
+
+    @NonNull
+    public static <T> Result<T> fail(String message, T data) {
+        return new Result<T>(ResultCodeEnum.FAIL.getCode(), message, data);
+    }
+
+    public static <T> Result<T> fail(ResultCodeEnum resultCodeEnum) {
+        return new Result<>(resultCodeEnum, null);
+    }
+
+    public static <T> Result<T> fail(ResultCodeEnum resultCodeEnum, T data) {
+        return new Result<>(resultCodeEnum, data);
+    }
+
+    public static <T> Result<T> fail(ResultCodeEnum resultCodeEnum, String message, T data) {
+        return new Result<>(resultCodeEnum.getCode(), message, data);
+    }
+
+    public static <T> Result<T> fail(Throwable throwable) {
+        return new Result<>(ResultCodeEnum.FAIL.getCode(), throwable.getMessage(), null);
+    }
+
+    public static <T> Result<T> fail(ResultCodeEnum resultCodeEnum, Throwable throwable) {
+        return new Result<>(resultCodeEnum.getCode(), throwable.getMessage(), null);
+    }
+
+    public static <T> Result<T> fail(ResultCodeEnum resultCodeEnum, Throwable throwable, T data) {
+        return new Result<>(resultCodeEnum.getCode(), throwable.getMessage(), data);
     }
 
 }

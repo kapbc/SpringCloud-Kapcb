@@ -11,7 +11,10 @@ package com.kapcb.ccc.constants.enmus;
  */
 public enum ResultCodeEnum {
 
-    SUCCESS(200, "success");
+    SUCCESS(200, "success"),
+    FAIL(0,"fail"),
+    PARAMETER_VALIDATION_FAIL(1005,"params validation fail")
+    ;
     private final int code;
 
     private final String msg;

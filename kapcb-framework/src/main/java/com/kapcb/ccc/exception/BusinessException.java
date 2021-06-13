@@ -10,4 +10,12 @@ package com.kapcb.ccc.exception;
  * @date 2021/6/12 21:11
  */
 public class BusinessException extends CoreException{
+
+    private static final long serialVersionUID=1L;
+
+    private int code;
+
+    public int getCode(){
+        return this.code;
+    }
 }

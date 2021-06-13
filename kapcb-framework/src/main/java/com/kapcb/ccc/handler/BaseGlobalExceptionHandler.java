@@ -1,5 +1,6 @@
 package com.kapcb.ccc.handler;
 
+import com.kapcb.ccc.constants.CoreConstant;
 import com.kapcb.ccc.constants.enmus.ResultCodeEnum;
 import com.kapcb.ccc.exception.BusinessException;
 import com.kapcb.ccc.exception.CoreException;
@@ -38,18 +39,18 @@ public class BaseGlobalExceptionHandler {
     @ExceptionHandler(value = {Exception.class})
     public Result handlerException(Exception e) {
         log.error("handlerException : " + e.getMessage(), e);
-        return Result.failed(e.getMessage());
+        return Result.fail(e.getMessage());
     }
 
     @ExceptionHandler(value = {CoreException.class})
     public Result handlerSystemException(CoreException e) {
-        log.error("handler globalSourceSystemException : ", e);
-        return Result.failed(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR.value());
+        log.error("handler CoreException : ", e);
+        return Result.fail(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR.value());
     }
 
     @ExceptionHandler(value = {BusinessException.class})
     public Result handlerBusinessException(BusinessException e) {
-        return Result.failed(e.getMessage(), e.getCode());
+        return Result.fail(e.getMessage(), e.getCode());
     }
 
     @ExceptionHandler(value = {BindException.class})
@@ -61,7 +62,7 @@ public class BaseGlobalExceptionHandler {
         }
         message = new StringBuilder(message.substring(0, message.length() - 1));
         log.error("handler BindException : " + message.toString());
-        return Result.failed(message.toString(), ResultCodeEnum.PARAMETER_VALIDATION_FAILED.getCode());
+        return Result.fail(message.toString(), ResultCodeEnum.PARAMETER_VALIDATION_FAIL.getCode());
     }
 
     @ExceptionHandler(value = {ConstraintViolationException.class})
@@ -75,7 +76,7 @@ public class BaseGlobalExceptionHandler {
         }
         message = new StringBuilder(message.substring(0, message.length() - 1));
         log.error("handler ConstraintViolationException : " + message.toString());
-        return Result.failed(message.toString(), ResultCodeEnum.PARAMETER_VALIDATION_FAILED.getCode());
+        return Result.fail(message.toString(), ResultCodeEnum.PARAMETER_VALIDATION_FAIL.getCode());
     }
 
     @ExceptionHandler(value = {MethodArgumentNotValidException.class})
@@ -86,35 +87,35 @@ public class BaseGlobalExceptionHandler {
         }
         message = new StringBuilder(message.substring(0, message.length() - 1));
         log.error("handler MethodArgumentNotValidException : " + message.toString());
-        return Result.failed(message.toString(), ResultCodeEnum.PARAMETER_VALIDATION_FAILED.getCode());
+        return Result.fail(message.toString(), ResultCodeEnum.PARAMETER_VALIDATION_FAIL.getCode());
     }
 
     @ExceptionHandler(value = {AccessDeniedException.class})
     public Result handlerAccessDeniedException(AccessDeniedException e) {
         log.error("handler AccessDeniedException : " + e.getMessage());
-        return Result.failed("没有权限访问", HttpStatus.FORBIDDEN.value());
+        return Result.fail("没有权限访问", HttpStatus.FORBIDDEN.value());
     }
 
     @ExceptionHandler(value = {HttpMediaTypeNotSupportedException.class})
     public Result handlerHttpMediaTypeNotSupportedException(HttpMediaTypeNotSupportedException e) {
         StringBuilder message = new StringBuilder();
-        message.append("target method not support [").append(StringUtils.substringBetween(e.getMessage(), "'", "'")).append("] ").append("media type");
+        message.append("target method not support [").append(StringUtils.substringBetween(e.getMessage(), CoreConstant.SINGLE_QUOTES, CoreConstant.SINGLE_QUOTES)).append("] ").append("media type");
         log.error("handler HttpMediaTypeNotSupportedException : " + message.toString());
-        return Result.failed(message.toString(), HttpStatus.INTERNAL_SERVER_ERROR.value());
+        return Result.fail(message.toString(), HttpStatus.INTERNAL_SERVER_ERROR.value());
     }
 
     @ExceptionHandler(value = {HttpMediaTypeNotAcceptableException.class})
     public Result handlerHttpMediaTypeNotAcceptableException(HttpMediaTypeNotAcceptableException e) {
         StringBuilder message = new StringBuilder();
-        message.append("target method not accept [").append(StringUtils.substringBetween(e.getMessage(), "'", "'")).append("] ").append(" method request");
+        message.append("target method not accept [").append(StringUtils.substringBetween(e.getMessage(), CoreConstant.SINGLE_QUOTES, CoreConstant.SINGLE_QUOTES)).append("] ").append(" method request");
         log.error("handler HttpMediaTypeNotAcceptableException : " + message.toString());
-        return Result.failed(message.toString(), HttpStatus.INTERNAL_SERVER_ERROR.value());
+        return Result.fail(message.toString(), HttpStatus.INTERNAL_SERVER_ERROR.value());
     }
 
     @ExceptionHandler(value = {AuthException.class})
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     public Result handlerAuthException(AuthException e) {
-        log.error("AuthException={}", e.getMessage());
-        return Result.failed(e.getMessage(), HttpStatus.UNAUTHORIZED.value());
+        log.error("handler AuthException : " + e.getMessage());
+        return Result.fail(e.getMessage(), HttpStatus.UNAUTHORIZED.value());
     }
 }
