@@ -3,7 +3,7 @@ package com.kapcb.ccc.configuration;
 /**
  * <a>Title: RabbitMqConfiguration </a>
  * <a>Author: Kapcb <a>
- * <a>Description:  <a>
+ * <a>Description: RabbitMq Configuration <a>
  *
  * @author Kapcb
  * @version 1.0.0

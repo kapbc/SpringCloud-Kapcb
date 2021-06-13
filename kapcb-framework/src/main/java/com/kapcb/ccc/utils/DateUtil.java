@@ -10,4 +10,6 @@ package com.kapcb.ccc.utils;
  * @date 2021/6/12 22:23
  */
 public class DateUtil {
+
+    private DateUtil(){}
 }

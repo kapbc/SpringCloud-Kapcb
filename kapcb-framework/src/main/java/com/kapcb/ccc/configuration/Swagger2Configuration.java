@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * <a>Title: Swagger2Configuration </a>
  * <a>Author: Kapcb <a>
- * <a>Description:  <a>
+ * <a>Description: Swagger2 Configuration <a>
  *
  * @author Kapcb
  * @version 1.0.0

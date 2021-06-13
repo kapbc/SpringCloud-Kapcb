@@ -3,7 +3,7 @@ package com.kapcb.ccc.constants.enmus;
 /**
  * <a>Title: ResultCodeEnum </a>
  * <a>Author: Kapcb <a>
- * <a>Description:  <a>
+ * <a>Description: Result Code Enum <a>
  *
  * @author Kapcb
  * @version 1.0.0

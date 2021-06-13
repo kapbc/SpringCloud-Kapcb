@@ -3,7 +3,7 @@ package com.kapcb.ccc.constants.pattern;
 /**
  * <a>Title: DatePattern </a>
  * <a>Author: Kapcb <a>
- * <a>Description:  <a>
+ * <a>Description: Date Pattern <a>
  *
  * @author Kapcb
  * @version 1.0.0
