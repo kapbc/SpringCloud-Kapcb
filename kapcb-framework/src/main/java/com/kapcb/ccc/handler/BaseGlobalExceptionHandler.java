@@ -83,7 +83,7 @@ public class BaseGlobalExceptionHandler {
     public Result handlerMethodArgumentNotValidException(MethodArgumentNotValidException e) {
         StringBuilder message = new StringBuilder();
         for (FieldError error : e.getBindingResult().getFieldErrors()) {
-            message.append(error.getField()).append(error.getDefaultMessage()).append(" ,");
+            message.append(error.getField()).append(error.getDefaultMessage()).append(CoreConstant.StringPool.SPACE_COMMA.value());
         }
         message = new StringBuilder(message.substring(0, message.length() - 1));
         log.error("handler MethodArgumentNotValidException : " + message.toString());
@@ -93,13 +93,13 @@ public class BaseGlobalExceptionHandler {
     @ExceptionHandler(value = {AccessDeniedException.class})
     public Result handlerAccessDeniedException(AccessDeniedException e) {
         log.error("handler AccessDeniedException : " + e.getMessage());
-        return Result.fail("没有权限访问", HttpStatus.FORBIDDEN.value());
+        return Result.fail("No access Permission", HttpStatus.FORBIDDEN.value());
     }
 
     @ExceptionHandler(value = {HttpMediaTypeNotSupportedException.class})
     public Result handlerHttpMediaTypeNotSupportedException(HttpMediaTypeNotSupportedException e) {
         StringBuilder message = new StringBuilder();
-        message.append("target method not support [").append(StringUtils.substringBetween(e.getMessage(), CoreConstant.SINGLE_QUOTES, CoreConstant.SINGLE_QUOTES)).append("] ").append("media type");
+        message.append("target method not support [").append(StringUtils.substringBetween(e.getMessage(), CoreConstant.StringPool.SINGLE_QUOTES.value(), CoreConstant.StringPool.SINGLE_QUOTES.value())).append("] ").append("media type");
         log.error("handler HttpMediaTypeNotSupportedException : " + message.toString());
         return Result.fail(message.toString(), HttpStatus.INTERNAL_SERVER_ERROR.value());
     }
@@ -107,7 +107,7 @@ public class BaseGlobalExceptionHandler {
     @ExceptionHandler(value = {HttpMediaTypeNotAcceptableException.class})
     public Result handlerHttpMediaTypeNotAcceptableException(HttpMediaTypeNotAcceptableException e) {
         StringBuilder message = new StringBuilder();
-        message.append("target method not accept [").append(StringUtils.substringBetween(e.getMessage(), CoreConstant.SINGLE_QUOTES, CoreConstant.SINGLE_QUOTES)).append("] ").append(" method request");
+        message.append("target method not accept [").append(StringUtils.substringBetween(e.getMessage(), CoreConstant.StringPool.SINGLE_QUOTES.value(), CoreConstant.StringPool.SINGLE_QUOTES.value())).append("] ").append(" method request");
         log.error("handler HttpMediaTypeNotAcceptableException : " + message.toString());
         return Result.fail(message.toString(), HttpStatus.INTERNAL_SERVER_ERROR.value());
     }

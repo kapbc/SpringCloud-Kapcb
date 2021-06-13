@@ -17,18 +17,27 @@ import java.math.BigDecimal;
 public class CoreConstant {
 
     public enum StringPool {
-
-    }
-
-    public enum IntegerPool {
-
         SEMICOLON(";", "分号"),
         COLON(":", "冒号"),
         COMMA(",", "逗号"),
         SPACE(" ", "空格"),
+        HYPHEN("-", "横杠"),
+        SPACE_HYPHEN(" - ", "空格横杠"),
+        UNDER_CROSS("_", "下划线"),
         SPACE_COMMA(" ,", "空格逗号"),
         EMPTY_STRING("", "空字符串"),
         SINGLE_QUOTES("'", "单引号"),
+        SHARP("#", "#号"),
+        STAR("*", "*号"),
+        AT_SIGN("@", "@号"),
+        PERCENT_SIGN("%", "%号"),
+        DOLLAR_SIGN("$", "$号"),
+        EXCLAMATION_SIGN("!", "!号"),
+        SLASH("/", "斜杠"),
+        DOT(".", "点"),
+
+
+        PK_NULL_VALUE("0", "主键为空的字符串值"),
 
         SQL_ORDER("ORDER", "SQL排序"),
         SQL_ACS("ASC", "SQL正序"),
@@ -39,7 +48,7 @@ public class CoreConstant {
         private String value;
         private String description;
 
-        IntegerPool(String value, String description) {
+        StringPool(String value, String description) {
             this.value = value;
             this.description = description;
         }
@@ -48,6 +57,10 @@ public class CoreConstant {
         public String value() {
             return this.value;
         }
+    }
+
+    public enum IntegerPool {
+
     }
 
     public enum LongPool {
@@ -61,75 +74,4 @@ public class CoreConstant {
     public enum BigDecimalPool {
 
     }
-    
-
-    /**
-     * 横杠
-     */
-    public static final String HYPHEN = "-";
-
-    /**
-     * 下横杠
-     */
-    public static final String UNDER_CROSS = "_";
-
-    /**
-     * 名称分隔符
-     */
-    public static final String NAME_SEPARATOR = "#";
-
-    /**
-     * @
-     */
-    public static final String AT = "@";
-
-    /**
-     * 冒号
-     */
-    public static final String COLON = ":";
-
-    /**
-     * 核心信息
-     */
-    public static final String TOKEN = "Token";
-
-    /**
-     * 主键字段
-     */
-    public static final String PK_FIELD = "id";
-
-    /**
-     * 主键为空的字符串值
-     */
-    public static final String PK_NULL_VALUE = "0";
-
-    /**
-     * 用户名前缀
-     */
-    public static final String USERNAME_PREFIX = "accounts_";
-
-    /**
-     * 连续登录失败次数
-     */
-    public static final int CONSECUTIVE_LOGIN_FAILURES = 5;
-
-    /**
-     * 斜杠
-     */
-    public static final String SLASH = "/";
-
-    /**
-     * 点
-     */
-    public static final String DOT = ".";
-
-    /**
-     * 在...之间分隔符
-     */
-    String BETWEEN = " - ";
-
-    /**
-     * 通用的page size 最大值
-     */
-    int MAX_PAGE_SIZE = 100;
 }
