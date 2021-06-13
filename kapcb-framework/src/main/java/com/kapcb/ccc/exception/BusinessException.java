@@ -9,5 +9,5 @@ package com.kapcb.ccc.exception;
  * @version 1.0.0
  * @date 2021/6/12 21:11
  */
-public class BusinessException {
+public class BusinessException extends CoreException{
 }
