@@ -11,7 +11,7 @@ package com.kapcb.ccc.constants.enmus;
  */
 public enum ResultCodeEnum {
 
-    ;
+    SUCCESS(200, "success");
     private final int code;
 
     private final String msg;
