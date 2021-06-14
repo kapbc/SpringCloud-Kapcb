@@ -1,5 +1,6 @@
 package com.kapcb.ccc.utils;
 
+import com.kapcb.ccc.constants.enmus.StringPool;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.env.Environment;
 
@@ -23,8 +24,8 @@ public class KapcbUtil {
     public static void serverStartUpBanner(Environment environment) {
         String banner = "----------------------------------------------------------------------------------\n" +
                 "服务启动成功，时间：" + LocalDateTime.now() + "\n" +
-                "服务名称：" + environment.getProperty("spring.application.name") + "\n" +
-                "端口号：" + environment.getProperty("server.port") + "\n" +
+                "服务名称：" + environment.getProperty(StringPool.SERVER_APPLICATION_NAME.value()) + "\n" +
+                "端口号：" + environment.getProperty(StringPool.SERVER_PORT.value()) + "\n" +
                 "----------------------------------------------------------------------------------";
     }
 }

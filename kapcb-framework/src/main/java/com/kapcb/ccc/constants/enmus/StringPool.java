@@ -13,6 +13,9 @@ import org.springframework.lang.NonNull;
  */
 public enum StringPool {
 
+    /**
+     * Common Constants
+     */
     SEMICOLON(";", "分号"),
     COLON(":", "冒号"),
     COMMA(",", "逗号"),
@@ -34,10 +37,20 @@ public enum StringPool {
 
     PK_NULL_VALUE("0", "主键为空的字符串值"),
 
+    /**
+     * SQL programmer
+     */
     SQL_ORDER("ORDER", "SQL排序"),
     SQL_ACS("ASC", "SQL正序"),
     SQL_DESC("DESC", "SQL倒序"),
     SQL_LIMIT("LIMIT ", "SQL限定数量"),
+
+
+    /**
+     * Server Configuration Document Key
+     */
+    SERVER_APPLICATION_NAME("spring.application.name", "获取服务名称"),
+    SERVER_PORT("server.port", "获取服务端口号"),
     ;
 
     private String value;
