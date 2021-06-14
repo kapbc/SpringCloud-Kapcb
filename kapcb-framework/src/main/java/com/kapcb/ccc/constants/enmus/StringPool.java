@@ -43,7 +43,7 @@ public enum StringPool {
     SQL_ORDER("ORDER", "SQL排序"),
     SQL_ACS("ASC", "SQL正序"),
     SQL_DESC("DESC", "SQL倒序"),
-    SQL_LIMIT("LIMIT ", "SQL限定数量"),
+    SQL_LIMIT("LIMIT", "SQL限定数量"),
 
 
     /**
