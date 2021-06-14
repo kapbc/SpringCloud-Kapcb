@@ -1,9 +1,14 @@
 package com.kapcb.ccc.utils;
 
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
+import org.springframework.lang.NonNull;
+
+import java.util.Collection;
+import java.util.List;
 
 
 /**
@@ -32,16 +37,20 @@ public class OrikaBeanUtil {
      *
      * @param data    数据
      * @param toClass 需要映射的类对象
-     * @param <S>     映射类型
+     * @param <R>     映射类型
      * @param <T>     数据
      * @return
      */
-    public static <S, T> S map(T data, Class<S> toClass) {
+    @SneakyThrows(Exception.class)
+    public static <R, T> R map(T data, Class<R> toClass) {
         return MAPPER_FACADE.map(data, toClass);
     }
 
 //    public static <S, T> S map(T data, Class<S> toClass, Map<String, String> configMap) {
 //    }
 
-
+    @SneakyThrows(Exception.class)
+    public static <R, T> List<R> mapList(@NonNull Collection<T> data, Class<R> toClass) {
+        return MAPPER_FACADE.mapAsList(data, toClass);
+    }
 }
