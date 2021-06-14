@@ -5,19 +5,18 @@ import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
 
-import java.util.Map;
 
 /**
- * <a>Title: BeanUtil </a>
+ * <a>Title: OrikaBeanUtil </a>
  * <a>Author: Kapcb <a>
- * <a>Description:  <a>
+ * <a>Description: Orika Bean Util <a>
  *
  * @author Kapcb
  * @version 1.0.0
  * @date 2021/6/14 13:33
  */
 @Slf4j
-public class BeanUtil {
+public class OrikaBeanUtil {
 
     private static final MapperFacade MAPPER_FACADE;
 
