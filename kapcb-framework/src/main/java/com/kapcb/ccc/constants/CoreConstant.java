@@ -1,9 +1,7 @@
 package com.kapcb.ccc.constants;
 
-import com.baomidou.mybatisplus.core.toolkit.StringPool;
 import org.springframework.lang.NonNull;
 
-import java.math.BigDecimal;
 
 /**
  * <a>Title: CoreConstant </a>
@@ -57,21 +55,5 @@ public class CoreConstant {
         public String value() {
             return this.value;
         }
-    }
-
-    public enum IntegerPool {
-
-    }
-
-    public enum LongPool {
-
-    }
-
-    public enum DoublePool {
-
-    }
-
-    public enum BigDecimalPool {
-
     }
 }

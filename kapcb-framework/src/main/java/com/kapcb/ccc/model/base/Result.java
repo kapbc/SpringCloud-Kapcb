@@ -26,10 +26,19 @@ public class Result<T> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * status code
+     */
     private Integer code;
 
+    /**
+     * response message
+     */
     private String msg;
 
+    /**
+     * data
+     */
     private T data;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ssS")
@@ -113,5 +122,4 @@ public class Result<T> implements Serializable {
     public static <T> Result<T> fail(ResultCodeEnum resultCodeEnum, Throwable throwable, T data) {
         return new Result<>(resultCodeEnum.getCode(), throwable.getMessage(), data);
     }
-
 }

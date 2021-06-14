@@ -30,5 +30,4 @@ public class BasePagination implements Serializable {
 
     @ApiModelProperty(value = "每页显示条数(默认值为10)", required = true)
     private int pageSize = 10;
-
 }
