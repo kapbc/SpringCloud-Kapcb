@@ -20,7 +20,7 @@ import javax.validation.ConstraintValidatorContext;
 @Component
 public class PaginationValidator implements ConstraintValidator<Pagination,Integer> {
 
-    
+
     @Override
     public boolean isValid(Integer value, ConstraintValidatorContext context) {
         return false;

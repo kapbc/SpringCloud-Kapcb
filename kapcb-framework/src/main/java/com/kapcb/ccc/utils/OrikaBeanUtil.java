@@ -39,7 +39,7 @@ public class OrikaBeanUtil {
      * @param toClass 需要映射的类对象
      * @param <R>     映射类型
      * @param <T>     数据
-     * @return
+     * @return R
      */
     @SneakyThrows(Exception.class)
     public static <R, T> R map(T data, Class<R> toClass) {
