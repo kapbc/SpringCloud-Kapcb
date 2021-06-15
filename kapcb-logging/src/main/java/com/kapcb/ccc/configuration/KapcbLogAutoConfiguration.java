@@ -73,5 +73,4 @@ public class KapcbLogAutoConfiguration {
         logstashTcpSocketAppender.setContext(LOGGER_CONTEXT);
         ROOT_LOGGER.addAppender(logstashTcpSocketAppender);
     }
-    
 }
