@@ -37,6 +37,7 @@
         <spring-boot-starter-jdbc.version>2.3.11.RELEASE</spring-boot-starter-jdbc.version>
         <spring-boot-starter-jdbc.version>2.3.11.RELEASE</spring-boot-starter-jdbc.version>
         <spring-boot-starter-data-redis.version>2.3.11.RELEASE</spring-boot-starter-data-redis.version>
+        <knife4j-spring-boot-starter.version>3.0.2</knife4j-spring-boot-starter.version>
         <!-- spring boot end -->
         <!-- spring start -->
         <spring-tx.version>5.2.15.RELEASE</spring-tx.version>
@@ -58,7 +59,7 @@
         <orika-core.version>1.5.4</orika-core.version>
         <xxl-job-core.version>2.3.0</xxl-job-core.version>
         <vavr.version>1.0.0-alpha-3</vavr.version>
-        <knife4j-spring-boot-starter.version>3.0.2</knife4j-spring-boot-starter.version>
+        <joda-time.version>2.10.10</joda-time.version>
         <!-- commons end -->
     </properties>
 
@@ -115,6 +116,12 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-data-redis</artifactId>
                 <version>${spring-boot-starter-data-redis.version}</version>
+            </dependency>
+            <!-- knife4j -->
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-spring-boot-starter</artifactId>
+                <version>${knife4j-spring-boot-starter.version}</version>
             </dependency>
             <!-- spring tx -->
             <dependency>
@@ -194,11 +201,10 @@
                 <artifactId>vavr</artifactId>
                 <version>${vavr.version}</version>
             </dependency>
-            <!-- knife4j -->
             <dependency>
-                <groupId>com.github.xiaoymin</groupId>
-                <artifactId>knife4j-spring-boot-starter</artifactId>
-                <version>${knife4j-spring-boot-starter.version}</version>
+                <groupId>joda-time</groupId>
+                <artifactId>joda-time</artifactId>
+                <version>${joda-time.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
