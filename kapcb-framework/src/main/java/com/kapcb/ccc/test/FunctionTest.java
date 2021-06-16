@@ -4,6 +4,8 @@ import io.vavr.Function2;
 import io.vavr.Function3;
 import io.vavr.Function4;
 
+import java.util.function.Function;
+
 /**
  * <a>Title: FunctionTest </a>
  * <a>Author: Kapcb <a>
@@ -25,6 +27,10 @@ public class FunctionTest {
         Function3<String, String, String, String> function = functionTest.createFunction();
         String appendResult = function.apply("kapcb ", "nb", "zui ");
         System.out.println("appendResult = " + appendResult);
+
+        Function2<Integer, Integer, Integer> function21 = compositeFunction();
+        Integer apply = function21.apply(3, 4);
+        System.out.println("apply = " + apply);
     }
 
     /**
@@ -54,5 +60,15 @@ public class FunctionTest {
 
     private String appendCharacter(String a, String b, String c) {
         return a + c + b;
+    }
+
+    /**
+     * 组合函数
+     */
+    private static Function2<Integer, Integer, Integer> compositeFunction() {
+        Function2<Integer, Integer, Integer> plusSum = Integer::sum;
+        Function<Integer, Integer> multiplyByTwo = c -> c * 2;
+        Function2<Integer, Integer, Integer> addSumAndMultiplyBy2 = plusSum.andThen(multiplyByTwo);
+        return addSumAndMultiplyBy2;
     }
 }
