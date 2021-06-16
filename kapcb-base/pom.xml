@@ -9,8 +9,6 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
          
-<!-- https://github.com/xubinux/xbin-store -->
-
     <parent>
         <artifactId>spring-boot-starter-parent</artifactId>
         <groupId>org.springframework.boot</groupId>
@@ -247,6 +245,10 @@
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
         </dependency>
     </dependencies>
 
