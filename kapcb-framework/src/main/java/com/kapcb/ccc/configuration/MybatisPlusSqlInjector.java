@@ -87,7 +87,7 @@ public class MybatisPlusSqlInjector implements Interceptor {
     }
 
     private static Object updateWithStatementHandler(StatementHandler statementHandler, Statement statement, boolean batchInsert) {
-
+        return null;
     }
 
     private static void dispatcherSqlData(MybatisPlusSqlDataVO mybatisPlusSqlDataVO) {

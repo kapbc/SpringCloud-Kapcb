@@ -31,7 +31,7 @@ public class TestTuple {
         System.out.println("vavrMapping is : " + vavrMapping + " versionMapping is : " + versionMapping);
 
         String transformTuple = transformTuple(testTuple2);
-        System.out.println("transformTuple = " + transformTuple);
+        System.out.println("transformTuple : " + transformTuple);
     }
 
     /**
