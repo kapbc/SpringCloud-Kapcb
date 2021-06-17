@@ -2,7 +2,6 @@ package com.kapcb.ccc.test;
 
 import io.vavr.Function2;
 import io.vavr.Function3;
-import io.vavr.Function4;
 
 import java.util.function.Function;
 
