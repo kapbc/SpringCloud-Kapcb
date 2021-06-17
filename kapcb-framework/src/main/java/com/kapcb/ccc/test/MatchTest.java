@@ -32,6 +32,7 @@ public class MatchTest {
     }
 
     private static Function1<String, Integer> matchTest2(Integer number) {
+        return null;
     }
 
 }
