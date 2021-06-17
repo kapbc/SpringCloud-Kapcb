@@ -21,5 +21,15 @@ public class ListTest {
         List<String> wocao = append.tail().prepend("wocao");
         System.out.println("wocao = " + wocao);
 
+
+        String ccc = List.of("mike", "kapcb", "ccc")
+                .intersperse(",")
+                .foldLeft(new StringBuilder(), StringBuilder::append)
+                .toString();
+        System.out.println("ccc = " + ccc);
+
+        String k = List.of("1", "2", "3")
+//                .intersperse(",")
+                .foldRight(new StringBuilder("k"), StringBuilder::append).toString();
     }
 }
