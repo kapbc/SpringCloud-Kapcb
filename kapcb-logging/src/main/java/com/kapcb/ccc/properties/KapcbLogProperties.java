@@ -13,7 +13,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @date 2021/6/14 19:37
  */
 @Data
-@ConfigurationProperties(prefix = "kapcb.log")
+@ConfigurationProperties(prefix = "kapcb.logstash")
 public class KapcbLogProperties {
 
     /**
