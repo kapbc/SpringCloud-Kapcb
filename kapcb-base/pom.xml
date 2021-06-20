@@ -8,7 +8,7 @@
     <artifactId>kapcb-base</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-         
+
     <parent>
         <artifactId>spring-boot-starter-parent</artifactId>
         <groupId>org.springframework.boot</groupId>
@@ -60,6 +60,7 @@
         <xxl-job-core.version>2.3.0</xxl-job-core.version>
         <vavr.version>1.0.0-alpha-3</vavr.version>
         <joda-time.version>2.10.10</joda-time.version>
+        <guava.version>19.0</guava.version>
         <!-- commons end -->
     </properties>
 
@@ -201,10 +202,16 @@
                 <artifactId>vavr</artifactId>
                 <version>${vavr.version}</version>
             </dependency>
+            <!-- joda time formatter -->
             <dependency>
                 <groupId>joda-time</groupId>
                 <artifactId>joda-time</artifactId>
                 <version>${joda-time.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -283,5 +290,5 @@
         <!-- snapshots version end -->
     </distributionManagement>
     <!-- deploy private nexus server end -->
-         
+
 </project>
