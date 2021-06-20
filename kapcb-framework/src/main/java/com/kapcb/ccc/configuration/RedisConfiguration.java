@@ -73,7 +73,7 @@ public class RedisConfiguration {
     }
 
     @Bean
-    @ConditionalOnBean(value = "redisTemplate")
+    @ConditionalOnBean(value = RedisTemplate.class)
     public RedisService redisService(@Qualifier("redisTemplate") RedisTemplate<String, Object> redisTemplate) {
         return new RedisService(redisTemplate);
     }

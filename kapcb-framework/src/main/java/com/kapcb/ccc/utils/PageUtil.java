@@ -81,5 +81,4 @@ public class PageUtil {
     private static <T> List<T> getPaginationRecords(@NonNull Tuple5<List<T>, Long, Long, Long, Long> paginationTuple) {
         return paginationTuple._1;
     }
-
 }
