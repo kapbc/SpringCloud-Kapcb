@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 /**
  * <a>Title: BloomFilterComponent </a>
  * <a>Author: Kapcb <a>
- * <a>Description:  <a>
+ * <a>Description: Bloom Filter Component <a>
  *
  * @author Kapcb
  * @version 1.0.0

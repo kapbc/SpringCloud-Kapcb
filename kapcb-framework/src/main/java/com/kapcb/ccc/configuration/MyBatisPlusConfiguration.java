@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * <a>Title: MyBatisPulsConfiguration </a>
  * <a>Author: Kapcb <a>
- * <a>Description:  <a>
+ * <a>Description: MyBatis Plus Configuration <a>
  *
  * @author Kapcb
  * @version 1.0.0
