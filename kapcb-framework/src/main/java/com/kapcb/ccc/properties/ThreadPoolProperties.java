@@ -1,13 +1,9 @@
-package com.kapcb.ccc.core.pool;
+package com.kapcb.ccc.properties;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 /**
  * <a>Title: ThreadPoolProperties </a>
@@ -20,11 +16,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Data
 @Builder
-@Configuration
-@NoArgsConstructor
-@AllArgsConstructor
-@EnableAutoConfiguration
-@EnableConfigurationProperties
+@Component
 @ConfigurationProperties(prefix = "kapcb.thread.pool")
 public class ThreadPoolProperties {
 

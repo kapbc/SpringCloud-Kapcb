@@ -22,6 +22,7 @@
         <resource.delimiter>@</resource.delimiter>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
+        <spring-boot.version>2.3.11.RELEASE</spring-boot.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!-- base end -->
@@ -33,10 +34,11 @@
         <spring-cloud-starter-netflix-hystrix.version>2.2.8.RELEASE</spring-cloud-starter-netflix-hystrix.version>
         <!-- spring cloud end -->
         <!-- spring boot start -->
-        <spring-boot-autoconfigure.version>2.3.11.RELEASE</spring-boot-autoconfigure.version>
-        <spring-boot-starter-jdbc.version>2.3.11.RELEASE</spring-boot-starter-jdbc.version>
-        <spring-boot-starter-jdbc.version>2.3.11.RELEASE</spring-boot-starter-jdbc.version>
-        <spring-boot-starter-data-redis.version>2.3.11.RELEASE</spring-boot-starter-data-redis.version>
+        <spring-boot-autoconfigure.version>${spring-boot.version}</spring-boot-autoconfigure.version>
+        <spring-boot-starter-jdbc.version>${spring-boot.version}</spring-boot-starter-jdbc.version>
+        <spring-boot-starter-jdbc.version>${spring-boot.version}</spring-boot-starter-jdbc.version>
+        <spring-boot-starter-data-redis.version>${spring-boot.version}</spring-boot-starter-data-redis.version>
+        <spring-boot-configuration-processor.version>${spring-boot.version}</spring-boot-configuration-processor.version>
         <knife4j-spring-boot-starter.version>3.0.2</knife4j-spring-boot-starter.version>
         <!-- spring boot end -->
         <!-- spring start -->
@@ -118,17 +120,22 @@
                 <artifactId>spring-boot-starter-data-redis</artifactId>
                 <version>${spring-boot-starter-data-redis.version}</version>
             </dependency>
-            <!-- knife4j -->
             <dependency>
-                <groupId>com.github.xiaoymin</groupId>
-                <artifactId>knife4j-spring-boot-starter</artifactId>
-                <version>${knife4j-spring-boot-starter.version}</version>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-configuration-processor</artifactId>
+                <version>${spring-boot-configuration-processor.version}</version>
             </dependency>
             <!-- spring tx -->
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-tx</artifactId>
                 <version>${spring-tx.version}</version>
+            </dependency>
+            <!-- knife4j -->
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-spring-boot-starter</artifactId>
+                <version>${knife4j-spring-boot-starter.version}</version>
             </dependency>
             <!-- javax servlet api -->
             <dependency>
