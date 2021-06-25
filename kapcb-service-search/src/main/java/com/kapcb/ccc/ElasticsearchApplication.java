@@ -24,5 +24,5 @@ public class ElasticsearchApplication {
                 .web(WebApplicationType.REACTIVE)
                 .run(args);
     }
-    
+
 }
