@@ -16,6 +16,7 @@ import org.springframework.cloud.client.SpringCloudApplication;
  */
 @SpringCloudApplication
 public class ElasticsearchApplication {
+
     public static void main(String[] args) {
         new SpringApplicationBuilder()
                 .sources(ElasticsearchApplication.class)
@@ -23,4 +24,5 @@ public class ElasticsearchApplication {
                 .web(WebApplicationType.REACTIVE)
                 .run(args);
     }
+    
 }
