@@ -267,35 +267,35 @@
     </dependencies>
 
     <!-- maven repositories address start -->
-    <repositories>
-        <repository>
-            <id>kapcb-public</id>
-            <url>http://192.168.80.135:8888/repository/maven-public/</url>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>kapcb-public</id>
-            <url>http://192.168.80.135:8888/repository/maven-public/</url>
-        </pluginRepository>
-    </pluginRepositories>
-    <!-- maven repositories address end -->
+<!--    <repositories>-->
+<!--        <repository>-->
+<!--            <id>kapcb-public</id>-->
+<!--            <url>http://192.168.80.135:8888/repository/maven-public/</url>-->
+<!--        </repository>-->
+<!--    </repositories>-->
+<!--    <pluginRepositories>-->
+<!--        <pluginRepository>-->
+<!--            <id>kapcb-public</id>-->
+<!--            <url>http://192.168.80.135:8888/repository/maven-public/</url>-->
+<!--        </pluginRepository>-->
+<!--    </pluginRepositories>-->
+<!--    &lt;!&ndash; maven repositories address end &ndash;&gt;-->
 
-    <!-- deploy private nexus server start -->
-    <distributionManagement>
-        <!-- releases version start -->
-        <repository>
-            <id>kapcb-releases</id>
-            <url>http://192.168.80.135:8888/repository/maven-releases/</url>
-        </repository>
-        <!-- releases version end -->
-        <!-- snapshots version start -->
-        <snapshotRepository>
-            <id>kapcb-snapshots</id>
-            <url>http://192.168.80.135:8888/repository/maven-snapshots/</url>
-        </snapshotRepository>
-        <!-- snapshots version end -->
-    </distributionManagement>
+<!--    &lt;!&ndash; deploy private nexus server start &ndash;&gt;-->
+<!--    <distributionManagement>-->
+<!--        &lt;!&ndash; releases version start &ndash;&gt;-->
+<!--        <repository>-->
+<!--            <id>kapcb-releases</id>-->
+<!--            <url>http://192.168.80.135:8888/repository/maven-releases/</url>-->
+<!--        </repository>-->
+<!--        &lt;!&ndash; releases version end &ndash;&gt;-->
+<!--        &lt;!&ndash; snapshots version start &ndash;&gt;-->
+<!--        <snapshotRepository>-->
+<!--            <id>kapcb-snapshots</id>-->
+<!--            <url>http://192.168.80.135:8888/repository/maven-snapshots/</url>-->
+<!--        </snapshotRepository>-->
+<!--        &lt;!&ndash; snapshots version end &ndash;&gt;-->
+<!--    </distributionManagement>-->
     <!-- deploy private nexus server end -->
 
 </project>
