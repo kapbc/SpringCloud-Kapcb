@@ -16,6 +16,7 @@
         <relativePath/>
     </parent>
 
+    <!-- version control start -->
     <properties>
         <!-- base start -->
         <java.version>1.8</java.version>
@@ -23,34 +24,44 @@
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <spring-boot.version>2.3.11.RELEASE</spring-boot.version>
+        <spring-cloud.version>2.2.8.RELEASE</spring-cloud.version>
+        <spring-cloud-alibaba.version>2.2.5.RELEASE</spring-cloud-alibaba.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!-- base end -->
         <!-- spring cloud start -->
         <spring-cloud-dependencies.version>Hoxton.SR11</spring-cloud-dependencies.version>
-        <spring-cloud-alibaba-dependencies.version>2.2.5.RELEASE</spring-cloud-alibaba-dependencies.version>
-        <spring-cloud-starter-openfeign.version>2.2.8.RELEASE</spring-cloud-starter-openfeign.version>
-        <spring-cloud-starter-loadbalancer.version>2.2.8.RELEASE</spring-cloud-starter-loadbalancer.version>
-        <spring-cloud-starter-netflix-hystrix.version>2.2.8.RELEASE</spring-cloud-starter-netflix-hystrix.version>
+        <spring-cloud-alibaba-dependencies.version>${spring-cloud-alibaba.version}</spring-cloud-alibaba-dependencies.version>
+        <spring-cloud-starter-openfeign.version>${spring-cloud.version}</spring-cloud-starter-openfeign.version>
+        <spring-cloud-starter-loadbalancer.version>${spring-cloud.version}</spring-cloud-starter-loadbalancer.version>
+        <spring-cloud-starter-netflix-hystrix.version>${spring-cloud.version}</spring-cloud-starter-netflix-hystrix.version>
+        <spring-cloud-starter-gateway.verion>${spring-cloud.version}</spring-cloud-starter-gateway.verion>
+        <spring-cloud-stream-binder-rabbit.version>3.0.12.RELEASE</spring-cloud-stream-binder-rabbit.version>
+        <spring-cloud-stream-binder-kafka.version>3.0.12.RELEASE</spring-cloud-stream-binder-kafka.version>
+        <spring-cloud-stream-binder-rocketmq.version>0.9.0.RELEASE</spring-cloud-stream-binder-rocketmq.version>
         <!-- spring cloud end -->
         <!-- spring boot start -->
         <spring-boot-autoconfigure.version>${spring-boot.version}</spring-boot-autoconfigure.version>
+        <spring-boot-configuration-processor.version>${spring-boot.version}</spring-boot-configuration-processor.version>
         <spring-boot-starter-jdbc.version>${spring-boot.version}</spring-boot-starter-jdbc.version>
         <spring-boot-starter-jdbc.version>${spring-boot.version}</spring-boot-starter-jdbc.version>
         <spring-boot-starter-data-redis.version>${spring-boot.version}</spring-boot-starter-data-redis.version>
-        <spring-boot-configuration-processor.version>${spring-boot.version}</spring-boot-configuration-processor.version>
+        <spring-boot-starter-security.version>${spring-boot.version}</spring-boot-starter-security.version>
+        <spring-boot-starter-mail.version>${spring-boot.version}</spring-boot-starter-mail.version>
+        <spring-boot-starter-websocket.version>${spring-boot.version}</spring-boot-starter-websocket.version>
+        <spring-boot-starter-webflux.version>${spring-boot.version}</spring-boot-starter-webflux.version>
         <knife4j-spring-boot-starter.version>3.0.2</knife4j-spring-boot-starter.version>
         <!-- spring boot end -->
         <!-- spring start -->
         <spring-tx.version>5.2.15.RELEASE</spring-tx.version>
         <!-- spring end -->
         <!-- java start -->
-        <javax-servlet-api.version>4.0.1</javax-servlet-api.version>
+        <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
         <!-- java end -->
         <!-- mysql start -->
         <mysql-connector-java.version>8.0.24</mysql-connector-java.version>
         <mybatis-plus-boot-starter.version>3.4.3</mybatis-plus-boot-starter.version>
-        <dynamic-datasource-spring-boot-starter.version>3.4.3</dynamic-datasource-spring-boot-starter.version>
+        <dynamic-datasource-spring-boot-starter.version>3.3.2</dynamic-datasource-spring-boot-starter.version>
         <!-- mysql end -->
         <!-- commons start -->
         <commons-pool2.version>2.9.0</commons-pool2.version>
@@ -63,8 +74,13 @@
         <vavr.version>1.0.0-alpha-3</vavr.version>
         <joda-time.version>2.10.10</joda-time.version>
         <guava.version>19.0</guava.version>
+        <easyexcel.version>2.2.8</easyexcel.version>
+        <slf4j-api.version>2.0.0-alpha1</slf4j-api.version>
+        <elasticsearch-rest-high-level-client.version>7.13.2</elasticsearch-rest-high-level-client.version>
+        <redisson.version>3.15.6</redisson.version>
         <!-- commons end -->
     </properties>
+    <!-- version control end -->
 
     <dependencyManagement>
         <dependencies>
@@ -102,11 +118,37 @@
                 <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
                 <version>${spring-cloud-starter-netflix-hystrix.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-gateway</artifactId>
+                <version>${spring-cloud-starter-gateway.verion}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-stream-binder-rabbit</artifactId>
+                <version>${spring-cloud-stream-binder-rabbit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-stream-binder-kafka</artifactId>
+                <version>${spring-cloud-stream-binder-kafka.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-stream-binder-rocketmq</artifactId>
+                <version>${spring-cloud-stream-binder-rocketmq.version}</version>
+            </dependency>
             <!-- spring boot auto configuration -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-autoconfigure</artifactId>
                 <version>${spring-boot-autoconfigure.version}</version>
+            </dependency>
+            <!-- spring boot configuration processor -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-configuration-processor</artifactId>
+                <version>${spring-boot-configuration-processor.version}</version>
             </dependency>
             <!-- spring boot jdbc -->
             <dependency>
@@ -120,10 +162,28 @@
                 <artifactId>spring-boot-starter-data-redis</artifactId>
                 <version>${spring-boot-starter-data-redis.version}</version>
             </dependency>
+            <!-- spring boot security -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-configuration-processor</artifactId>
-                <version>${spring-boot-configuration-processor.version}</version>
+                <artifactId>spring-boot-starter-security</artifactId>
+                <version>${spring-boot-starter-security.version}</version>
+            </dependency>
+            <!-- spring boot mail -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-mail</artifactId>
+                <version>${spring-boot-starter-mail.version}</version>
+            </dependency>
+            <!-- spring boot websocket -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-websocket</artifactId>
+                <version>${spring-boot-starter-websocket.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-webflux</artifactId>
+                <version>${spring-boot-starter-webflux.version}</version>
             </dependency>
             <!-- spring tx -->
             <dependency>
@@ -140,8 +200,8 @@
             <!-- javax servlet api -->
             <dependency>
                 <groupId>javax.servlet</groupId>
-                <artifactId>javax-servlet-api</artifactId>
-                <version>${javax-servlet-api.version}</version>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>${javax.servlet-api.version}</version>
             </dependency>
             <!-- mysql connector java -->
             <dependency>
@@ -220,6 +280,26 @@
                 <artifactId>guava</artifactId>
                 <version>${guava.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>easyexcel</artifactId>
+                <version>${easyexcel.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.elasticsearch.client</groupId>
+                <artifactId>elasticsearch-rest-high-level-client</artifactId>
+                <version>${elasticsearch-rest-high-level-client.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson</artifactId>
+                <version>${redisson.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -227,6 +307,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -267,35 +351,35 @@
     </dependencies>
 
     <!-- maven repositories address start -->
-<!--    <repositories>-->
-<!--        <repository>-->
-<!--            <id>kapcb-public</id>-->
-<!--            <url>http://192.168.80.135:8888/repository/maven-public/</url>-->
-<!--        </repository>-->
-<!--    </repositories>-->
-<!--    <pluginRepositories>-->
-<!--        <pluginRepository>-->
-<!--            <id>kapcb-public</id>-->
-<!--            <url>http://192.168.80.135:8888/repository/maven-public/</url>-->
-<!--        </pluginRepository>-->
-<!--    </pluginRepositories>-->
-<!--    &lt;!&ndash; maven repositories address end &ndash;&gt;-->
+    <!--    <repositories>-->
+    <!--        <repository>-->
+    <!--            <id>kapcb-public</id>-->
+    <!--            <url>http://192.168.80.135:8888/repository/maven-public/</url>-->
+    <!--        </repository>-->
+    <!--    </repositories>-->
+    <!--    <pluginRepositories>-->
+    <!--        <pluginRepository>-->
+    <!--            <id>kapcb-public</id>-->
+    <!--            <url>http://192.168.80.135:8888/repository/maven-public/</url>-->
+    <!--        </pluginRepository>-->
+    <!--    </pluginRepositories>-->
+    <!--    &lt;!&ndash; maven repositories address end &ndash;&gt;-->
 
-<!--    &lt;!&ndash; deploy private nexus server start &ndash;&gt;-->
-<!--    <distributionManagement>-->
-<!--        &lt;!&ndash; releases version start &ndash;&gt;-->
-<!--        <repository>-->
-<!--            <id>kapcb-releases</id>-->
-<!--            <url>http://192.168.80.135:8888/repository/maven-releases/</url>-->
-<!--        </repository>-->
-<!--        &lt;!&ndash; releases version end &ndash;&gt;-->
-<!--        &lt;!&ndash; snapshots version start &ndash;&gt;-->
-<!--        <snapshotRepository>-->
-<!--            <id>kapcb-snapshots</id>-->
-<!--            <url>http://192.168.80.135:8888/repository/maven-snapshots/</url>-->
-<!--        </snapshotRepository>-->
-<!--        &lt;!&ndash; snapshots version end &ndash;&gt;-->
-<!--    </distributionManagement>-->
+    <!--    &lt;!&ndash; deploy private nexus server start &ndash;&gt;-->
+    <!--    <distributionManagement>-->
+    <!--        &lt;!&ndash; releases version start &ndash;&gt;-->
+    <!--        <repository>-->
+    <!--            <id>kapcb-releases</id>-->
+    <!--            <url>http://192.168.80.135:8888/repository/maven-releases/</url>-->
+    <!--        </repository>-->
+    <!--        &lt;!&ndash; releases version end &ndash;&gt;-->
+    <!--        &lt;!&ndash; snapshots version start &ndash;&gt;-->
+    <!--        <snapshotRepository>-->
+    <!--            <id>kapcb-snapshots</id>-->
+    <!--            <url>http://192.168.80.135:8888/repository/maven-snapshots/</url>-->
+    <!--        </snapshotRepository>-->
+    <!--        &lt;!&ndash; snapshots version end &ndash;&gt;-->
+    <!--    </distributionManagement>-->
     <!-- deploy private nexus server end -->
 
 </project>
