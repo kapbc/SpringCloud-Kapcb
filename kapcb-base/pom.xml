@@ -118,21 +118,25 @@
                 <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
                 <version>${spring-cloud-starter-netflix-hystrix.version}</version>
             </dependency>
+            <!-- spring cloud gateway -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-gateway</artifactId>
                 <version>${spring-cloud-starter-gateway.verion}</version>
             </dependency>
+            <!-- spring cloud stream binder rabbit -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-stream-binder-rabbit</artifactId>
                 <version>${spring-cloud-stream-binder-rabbit.version}</version>
             </dependency>
+            <!-- spring cloud stream binder kafka -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-stream-binder-kafka</artifactId>
                 <version>${spring-cloud-stream-binder-kafka.version}</version>
             </dependency>
+            <!-- spring cloud stream binder rocketmq -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-stream-binder-rocketmq</artifactId>
@@ -180,6 +184,7 @@
                 <artifactId>spring-boot-starter-websocket</artifactId>
                 <version>${spring-boot-starter-websocket.version}</version>
             </dependency>
+            <!-- spring boot webflux -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-webflux</artifactId>
@@ -275,26 +280,31 @@
                 <artifactId>joda-time</artifactId>
                 <version>${joda-time.version}</version>
             </dependency>
+            <!-- guava -->
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>${guava.version}</version>
             </dependency>
+            <!-- easyexcel -->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>easyexcel</artifactId>
                 <version>${easyexcel.version}</version>
             </dependency>
+            <!-- slf4j-api -->
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
                 <version>${slf4j-api.version}</version>
             </dependency>
+            <!-- elasticsearch rest level client -->
             <dependency>
                 <groupId>org.elasticsearch.client</groupId>
                 <artifactId>elasticsearch-rest-high-level-client</artifactId>
                 <version>${elasticsearch-rest-high-level-client.version}</version>
             </dependency>
+            <!-- redisson -->
             <dependency>
                 <groupId>org.redisson</groupId>
                 <artifactId>redisson</artifactId>
