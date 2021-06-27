@@ -75,7 +75,7 @@
         <joda-time.version>2.10.10</joda-time.version>
         <guava.version>19.0</guava.version>
         <easyexcel.version>2.2.8</easyexcel.version>
-        <slf4j-api.version>2.0.0-alpha1</slf4j-api.version>
+        <slf4j-api.version>1.8.0-beta4</slf4j-api.version>
         <elasticsearch-rest-high-level-client.version>7.13.2</elasticsearch-rest-high-level-client.version>
         <redisson.version>3.15.6</redisson.version>
         <!-- commons end -->
