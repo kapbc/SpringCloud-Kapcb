@@ -8,3 +8,4 @@ spring:
       password: 123456
   application:
     name: service-security
+    
