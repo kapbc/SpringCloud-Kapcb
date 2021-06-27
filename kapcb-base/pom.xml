@@ -75,7 +75,7 @@
         <joda-time.version>2.10.10</joda-time.version>
         <guava.version>19.0</guava.version>
         <easyexcel.version>2.2.8</easyexcel.version>
-        <slf4j-api.version>1.8.0-beta4</slf4j-api.version>
+        <slf4j-api.version>1.7.30</slf4j-api.version>
         <elasticsearch-rest-high-level-client.version>7.13.2</elasticsearch-rest-high-level-client.version>
         <redisson.version>3.15.6</redisson.version>
         <!-- commons end -->
@@ -325,6 +325,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>cn.hutool</groupId>
@@ -358,7 +359,18 @@
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
         </dependency>
-        
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
     </dependencies>
 
     <!-- maven repositories address start -->

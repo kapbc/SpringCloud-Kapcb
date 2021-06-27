@@ -20,9 +20,9 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "kapcb.thread.pool")
 public class ThreadPoolProperties {
 
-    private int corePoolSize;
-    private int maxPoolSize;
-    private int queueCapacity;
-    private int keepAliveTime;
-    private String threadNamePrefix;
+//    private int corePoolSize;
+//    private int maxPoolSize;
+//    private int queueCapacity;
+//    private int keepAliveTime;
+//    private String threadNamePrefix;
 }

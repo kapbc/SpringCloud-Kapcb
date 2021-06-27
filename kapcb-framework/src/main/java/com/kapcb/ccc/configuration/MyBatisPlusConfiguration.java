@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.inner.OptimisticLockerInnerInt
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -38,6 +39,7 @@ public class MyBatisPlusConfiguration {
     }
 
     @Bean
+//    @ConditionalOnMissingBean
     public MybatisPlusSqlInjector mybatisPlusSqlInjector(){
         // 自定义注入器 实现自定义方法注入
         return new MybatisPlusSqlInjector();

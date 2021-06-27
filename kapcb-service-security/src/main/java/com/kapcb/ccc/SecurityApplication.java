@@ -3,6 +3,7 @@ package com.kapcb.ccc;
 import org.springframework.boot.Banner;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
 /**
@@ -14,7 +15,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
  * @version 1.0.0
  * @date 2021/6/26 15:31
  */
-@SpringBootApplication
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 public class SecurityApplication {
 
     public static void main(String[] args) {

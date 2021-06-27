@@ -26,7 +26,7 @@ import java.sql.Statement;
  * @date 2021/6/12 22:42
  */
 @Slf4j
-@Component
+//@Component
 @Intercepts(value = {
         @Signature(method = "batch", type = StatementHandler.class, args = {Statement.class}),
         @Signature(method = "update", type = StatementHandler.class, args = {Statement.class}),
