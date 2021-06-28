@@ -1,5 +1,7 @@
 package com.kapcb.ccc.model.po;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,11 +22,14 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@TableName(value = "access_user_role")
 public class UserRolePO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @TableField(value = "role_id")
     private Integer roleId;
 
+    @TableField(value = "user_id")
     private Long userId;
 }

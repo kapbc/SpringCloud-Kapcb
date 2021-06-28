@@ -1,5 +1,6 @@
 package com.kapcb.ccc.model.po;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,6 +21,7 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@TableName(value = "access_user")
 public class UserPO implements Serializable {
 
     private static final long serialVersionUID=1L;
