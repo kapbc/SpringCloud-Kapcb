@@ -32,4 +32,5 @@ public class AccessUserRolePO implements Serializable {
 
     @TableField(value = "user_id")
     private Long userId;
+
 }
