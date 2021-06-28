@@ -23,7 +23,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @TableName(value = "access_user_role")
-public class UserRolePO implements Serializable {
+public class AccessUserRolePO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

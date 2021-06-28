@@ -22,7 +22,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @TableName(value = "access_user")
-public class UserPO implements Serializable {
+public class AccessUserPO implements Serializable {
 
     private static final long serialVersionUID=1L;
 

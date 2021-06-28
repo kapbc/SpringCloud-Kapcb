@@ -23,7 +23,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @TableName(value = "access_role")
-public class RolePO implements Serializable {
+public class AccessRolePO implements Serializable {
 
     private static final long serialVersionUID=1L;
 
