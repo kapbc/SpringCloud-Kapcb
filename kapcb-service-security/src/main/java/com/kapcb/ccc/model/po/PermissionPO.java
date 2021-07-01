@@ -1,5 +1,6 @@
 package com.kapcb.ccc.model.po;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -8,7 +9,7 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 /**
- * <a>Title: MenuPO </a>
+ * <a>Title: PermissionPO </a>
  * <a>Author: Kapcb <a>
  * <a>Description:  <a>
  *
@@ -20,9 +21,10 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AccessMenuPO implements Serializable {
+@TableName(value = "access_permission")
+public class PermissionPO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Integer menuId;
+    private Integer permissionId;
 }
