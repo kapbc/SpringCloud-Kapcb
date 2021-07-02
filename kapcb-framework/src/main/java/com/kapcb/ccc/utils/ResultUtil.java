@@ -3,7 +3,12 @@ package com.kapcb.ccc.utils;
 import com.kapcb.ccc.constants.enmus.ResultStatus;
 import com.kapcb.ccc.model.base.Result;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections.CollectionUtils;
+import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;
+
+import java.util.Collections;
+import java.util.List;
 
 /**
  * <a>Title: ResultUtil </a>
@@ -26,5 +31,10 @@ public class ResultUtil {
             return result.getData();
         }
         return null;
+    }
+
+    @NonNull
+    public static <T> List<T> checkAndReturn(@Nullable List<T> resultList) {
+        return CollectionUtils.isNotEmpty(resultList) ? resultList : Collections.emptyList();
     }
 }
