@@ -31,10 +31,12 @@
         <!-- base end -->
         <!-- spring cloud start -->
         <spring-cloud-dependencies.version>Hoxton.SR11</spring-cloud-dependencies.version>
-        <spring-cloud-alibaba-dependencies.version>${spring-cloud-alibaba.version}</spring-cloud-alibaba-dependencies.version>
+        <spring-cloud-alibaba-dependencies.version>${spring-cloud-alibaba.version}
+        </spring-cloud-alibaba-dependencies.version>
         <spring-cloud-starter-openfeign.version>${spring-cloud.version}</spring-cloud-starter-openfeign.version>
         <spring-cloud-starter-loadbalancer.version>${spring-cloud.version}</spring-cloud-starter-loadbalancer.version>
-        <spring-cloud-starter-netflix-hystrix.version>${spring-cloud.version}</spring-cloud-starter-netflix-hystrix.version>
+        <spring-cloud-starter-netflix-hystrix.version>${spring-cloud.version}
+        </spring-cloud-starter-netflix-hystrix.version>
         <spring-cloud-starter-gateway.verion>${spring-cloud.version}</spring-cloud-starter-gateway.verion>
         <spring-cloud-stream-binder-rabbit.version>3.0.12.RELEASE</spring-cloud-stream-binder-rabbit.version>
         <spring-cloud-stream-binder-kafka.version>3.0.12.RELEASE</spring-cloud-stream-binder-kafka.version>
@@ -42,7 +44,8 @@
         <!-- spring cloud end -->
         <!-- spring boot start -->
         <spring-boot-autoconfigure.version>${spring-boot.version}</spring-boot-autoconfigure.version>
-        <spring-boot-configuration-processor.version>${spring-boot.version}</spring-boot-configuration-processor.version>
+        <spring-boot-configuration-processor.version>${spring-boot.version}
+        </spring-boot-configuration-processor.version>
         <spring-boot-starter-jdbc.version>${spring-boot.version}</spring-boot-starter-jdbc.version>
         <spring-boot-starter-jdbc.version>${spring-boot.version}</spring-boot-starter-jdbc.version>
         <spring-boot-starter-data-redis.version>${spring-boot.version}</spring-boot-starter-data-redis.version>
@@ -50,6 +53,7 @@
         <spring-boot-starter-mail.version>${spring-boot.version}</spring-boot-starter-mail.version>
         <spring-boot-starter-websocket.version>${spring-boot.version}</spring-boot-starter-websocket.version>
         <spring-boot-starter-webflux.version>${spring-boot.version}</spring-boot-starter-webflux.version>
+        <spring-boot-starter-validation.version>${spring-boot.version}</spring-boot-starter-validation.version>
         <knife4j-spring-boot-starter.version>3.0.2</knife4j-spring-boot-starter.version>
         <!-- spring boot end -->
         <!-- spring start -->
@@ -190,6 +194,12 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-webflux</artifactId>
                 <version>${spring-boot-starter-webflux.version}</version>
+            </dependency>
+            <!-- spring boot validation -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-validation</artifactId>
+                <version>${spring-boot-starter-validation.version}</version>
             </dependency>
             <!-- spring tx -->
             <dependency>
