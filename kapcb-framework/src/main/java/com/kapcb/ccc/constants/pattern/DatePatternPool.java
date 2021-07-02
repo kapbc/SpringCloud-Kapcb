@@ -1,5 +1,7 @@
 package com.kapcb.ccc.constants.pattern;
 
+import cn.hutool.core.date.DatePattern;
+
 /**
  * <a>Title: DatePattern </a>
  * <a>Author: Kapcb <a>
@@ -9,7 +11,7 @@ package com.kapcb.ccc.constants.pattern;
  * @version 1.0.0
  * @date 2021/6/12 23:13
  */
-public class DatePattern {
+public class DatePatternPool extends DatePattern {
 
 
 }

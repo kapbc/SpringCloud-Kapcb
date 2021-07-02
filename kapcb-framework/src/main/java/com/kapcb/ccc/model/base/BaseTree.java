@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,5 +30,5 @@ public class BaseTree<T> implements Serializable {
 
     private Integer parentId;
 
-    private List<T> children;
+    private List<T> children = new ArrayList<>();
 }

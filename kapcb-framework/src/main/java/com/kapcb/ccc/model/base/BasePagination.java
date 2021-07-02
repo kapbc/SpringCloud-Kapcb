@@ -1,5 +1,6 @@
 package com.kapcb.ccc.model.base;
 
+import com.kapcb.ccc.constants.enmus.LongPool;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -26,8 +27,8 @@ import java.io.Serializable;
 public class BasePagination implements Serializable {
 
     @ApiModelProperty(value = "页数(默认值为1)", required = true)
-    private long pageNum = 1;
+    private long pageNum = LongPool.ONE.value();
 
     @ApiModelProperty(value = "每页显示条数(默认值为10)", required = true)
-    private long pageSize = 10;
+    private long pageSize = LongPool.TEN.value();
 }
