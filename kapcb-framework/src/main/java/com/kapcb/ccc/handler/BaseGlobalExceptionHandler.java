@@ -1,6 +1,6 @@
 package com.kapcb.ccc.handler;
 
-import com.kapcb.ccc.constants.enmus.ResultCodeEnum;
+import com.kapcb.ccc.constants.enmus.ResultStatus;
 import com.kapcb.ccc.constants.enmus.StringPool;
 import com.kapcb.ccc.exception.BusinessException;
 import com.kapcb.ccc.exception.CoreException;
@@ -64,7 +64,7 @@ public class BaseGlobalExceptionHandler {
         }
         message = new StringBuilder(message.substring(0, message.length() - 1));
         log.error("handler BindException : " + message.toString());
-        return Result.fail(message.toString(), ResultCodeEnum.PARAMETER_VALIDATION_FAIL.getCode());
+        return Result.fail(message.toString(), ResultStatus.PARAMETER_VALIDATION_FAIL.value());
     }
 
     @ExceptionHandler(value = {ConstraintViolationException.class})
@@ -78,7 +78,7 @@ public class BaseGlobalExceptionHandler {
         }
         message = new StringBuilder(message.substring(0, message.length() - 1));
         log.error("handler ConstraintViolationException : " + message.toString());
-        return Result.fail(message.toString(), ResultCodeEnum.PARAMETER_VALIDATION_FAIL.getCode());
+        return Result.fail(message.toString(), ResultStatus.PARAMETER_VALIDATION_FAIL.value());
     }
 
     @ExceptionHandler(value = {MethodArgumentNotValidException.class})
@@ -89,7 +89,7 @@ public class BaseGlobalExceptionHandler {
         }
         message = new StringBuilder(message.substring(0, message.length() - 1));
         log.error("handler MethodArgumentNotValidException : " + message.toString());
-        return Result.fail(message.toString(), ResultCodeEnum.PARAMETER_VALIDATION_FAIL.getCode());
+        return Result.fail(message.toString(), ResultStatus.PARAMETER_VALIDATION_FAIL.value());
     }
 
     @ExceptionHandler(value = {AccessDeniedException.class})

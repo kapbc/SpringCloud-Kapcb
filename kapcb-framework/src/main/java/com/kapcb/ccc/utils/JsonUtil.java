@@ -6,7 +6,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.kapcb.ccc.constants.enmus.ResultCodeEnum;
+import com.kapcb.ccc.constants.enmus.ResultStatus;
 import com.kapcb.ccc.model.base.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -59,7 +59,7 @@ public class JsonUtil {
         }
         try {
             Result result = OBJECT_MAPPER.readValue(jsonString, Result.class);
-            if (Objects.nonNull(result) && Objects.equals(result.getCode(), ResultCodeEnum.SUCCESS.getCode())) {
+            if (Objects.nonNull(result) && Objects.equals(result.getCode(), ResultStatus.SUCCESS.value())) {
                 log.info("the result data is : " + result.getData());
                 if (Objects.nonNull(result.getData())) {
                     return OBJECT_MAPPER.convertValue(result.getData(), clazz);
