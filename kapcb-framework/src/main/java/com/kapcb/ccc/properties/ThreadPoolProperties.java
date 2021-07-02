@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 @Data
 @Builder
 @Component
-@ConfigurationProperties(prefix = "kapcb.thread.pool")
+@ConfigurationProperties(prefix = "kapcb.thread.pool", ignoreInvalidFields = true)
 public class ThreadPoolProperties {
 
 //    private int corePoolSize;

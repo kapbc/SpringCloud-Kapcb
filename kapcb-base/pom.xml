@@ -78,6 +78,7 @@
         <slf4j-api.version>1.7.30</slf4j-api.version>
         <elasticsearch-rest-high-level-client.version>7.13.2</elasticsearch-rest-high-level-client.version>
         <redisson.version>3.15.6</redisson.version>
+        <logstash-logback-encoder.version>6.6</logstash-logback-encoder.version>
         <!-- commons end -->
     </properties>
     <!-- version control end -->
@@ -309,6 +310,12 @@
                 <groupId>org.redisson</groupId>
                 <artifactId>redisson</artifactId>
                 <version>${redisson.version}</version>
+            </dependency>
+            <!-- logstash logback encoder -->
+            <dependency>
+                <groupId>net.logstash.logback</groupId>
+                <artifactId>logstash-logback-encoder</artifactId>
+                <version>${logstash-logback-encoder.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
