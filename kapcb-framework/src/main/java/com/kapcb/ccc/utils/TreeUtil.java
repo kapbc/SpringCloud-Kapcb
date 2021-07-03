@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
  * @date 2021/7/1 22:32
  */
 @Slf4j
-public class TreeUtil<T> {
+public class TreeUtil {
 
     private TreeUtil() {
     }
