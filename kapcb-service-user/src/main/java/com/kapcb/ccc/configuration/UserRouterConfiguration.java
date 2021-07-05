@@ -8,6 +8,7 @@ import org.springframework.web.servlet.function.RouterFunction;
 import org.springframework.web.servlet.function.RouterFunctions;
 import org.springframework.web.servlet.function.ServerResponse;
 
+import static org.springframework.web.servlet.function.RequestPredicates.GET;
 import static org.springframework.web.servlet.function.RouterFunctions.route;
 
 /**
@@ -26,6 +27,6 @@ public class UserRouterConfiguration {
 
     @Bean
     public RouterFunction<ServerResponse> routerFunction(UserOperationHandler userOperationHandler){
-        route()
+        route(GET("user/detail/{userId}"),)
     }
 }
