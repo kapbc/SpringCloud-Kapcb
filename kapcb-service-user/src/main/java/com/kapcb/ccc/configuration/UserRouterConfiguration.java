@@ -21,12 +21,12 @@ import static org.springframework.web.servlet.function.RouterFunctions.route;
  * @date 2021/7/5 22:15
  */
 @Slf4j
-@Configuration
+//@Configuration
 public class UserRouterConfiguration {
 
 
-    @Bean
-    public RouterFunction<ServerResponse> routerFunction(UserOperationHandler userOperationHandler){
-        route(GET("user/detail/{userId}"),)
-    }
+//    @Bean
+//    public RouterFunction<ServerResponse> routerFunction(UserOperationHandler userOperationHandler){
+//        route(GET("user/detail/{userId}"),)
+//    }
 }

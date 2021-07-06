@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  * @date 2021/7/5 22:14
  */
 @Slf4j
-@Component
+//@Component
 public class UserOperationHandler {
 
 
