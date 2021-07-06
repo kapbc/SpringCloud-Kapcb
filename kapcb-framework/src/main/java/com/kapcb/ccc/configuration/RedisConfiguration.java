@@ -10,7 +10,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.google.common.base.Charsets;
 import com.google.common.hash.Funnel;
 import com.kapcb.ccc.helper.BloomFilterHelper;
-import com.kapcb.ccc.service.RedisService;
+import com.kapcb.ccc.auth.service.RedisService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;

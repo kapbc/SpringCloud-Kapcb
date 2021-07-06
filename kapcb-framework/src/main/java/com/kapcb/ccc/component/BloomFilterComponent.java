@@ -1,7 +1,7 @@
 package com.kapcb.ccc.component;
 
 import com.kapcb.ccc.helper.BloomFilterHelper;
-import com.kapcb.ccc.service.RedisService;
+import com.kapcb.ccc.auth.service.RedisService;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;

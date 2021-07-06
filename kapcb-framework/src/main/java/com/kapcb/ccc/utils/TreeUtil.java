@@ -1,7 +1,7 @@
 package com.kapcb.ccc.utils;
 
 import com.kapcb.ccc.constants.enmus.IntegerPool;
-import com.kapcb.ccc.model.base.BaseTree;
+import com.kapcb.ccc.auth.model.base.BaseTree;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.lang.NonNull;
 

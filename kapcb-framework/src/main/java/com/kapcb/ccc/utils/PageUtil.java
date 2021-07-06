@@ -1,7 +1,7 @@
 package com.kapcb.ccc.utils;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.kapcb.ccc.model.base.PageResult;
+import com.kapcb.ccc.auth.model.base.PageResult;
 import io.vavr.Tuple;
 import io.vavr.Tuple2;
 import io.vavr.Tuple4;

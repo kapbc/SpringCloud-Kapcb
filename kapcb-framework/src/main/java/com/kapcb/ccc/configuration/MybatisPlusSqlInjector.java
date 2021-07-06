@@ -1,7 +1,7 @@
 package com.kapcb.ccc.configuration;
 
 import com.alibaba.fastjson.JSON;
-import com.kapcb.ccc.model.vo.MybatisPlusSqlDataVO;
+import com.kapcb.ccc.auth.model.vo.MybatisPlusSqlDataVO;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.executor.statement.StatementHandler;
@@ -11,7 +11,6 @@ import org.apache.ibatis.plugin.Intercepts;
 import org.apache.ibatis.plugin.Invocation;
 import org.apache.ibatis.plugin.Signature;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
 import java.sql.SQLException;
 import java.sql.Statement;

@@ -1,7 +1,7 @@
 package com.kapcb.ccc.utils;
 
 import com.kapcb.ccc.constants.enmus.ResultStatus;
-import com.kapcb.ccc.model.base.Result;
+import com.kapcb.ccc.auth.model.base.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.lang.NonNull;

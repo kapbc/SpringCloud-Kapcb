@@ -4,7 +4,7 @@ import com.kapcb.ccc.constants.enmus.ResultStatus;
 import com.kapcb.ccc.constants.enmus.StringPool;
 import com.kapcb.ccc.exception.BusinessException;
 import com.kapcb.ccc.exception.CoreException;
-import com.kapcb.ccc.model.base.Result;
+import com.kapcb.ccc.auth.model.base.Result;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpStatus;
