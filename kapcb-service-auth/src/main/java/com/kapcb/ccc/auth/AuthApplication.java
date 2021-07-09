@@ -15,7 +15,7 @@ import org.springframework.context.annotation.ComponentScan;
  * @version 1.0.0
  * @date 2021/7/6 21:27
  */
-@ComponentScan(basePackages = {"com.kapcb.ccc.*","kapcb.framework.web.*"})
+@ComponentScan(basePackages = {"com.kapcb.ccc.*", "kapcb.framework.web.*"})
 @SpringBootApplication
 public class AuthApplication {
 
