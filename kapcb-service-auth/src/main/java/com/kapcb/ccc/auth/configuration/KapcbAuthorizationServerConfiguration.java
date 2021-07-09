@@ -2,6 +2,7 @@ package com.kapcb.ccc.auth.configuration;
 
 import com.kapcb.ccc.auth.service.impl.RedisAuthenticationCodeServiceImpl;
 import com.kapcb.ccc.auth.service.impl.RedisClientDetailServiceImpl;
+import com.kapcb.ccc.auth.translator.AuthWebExceptionTranslator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
@@ -32,6 +33,7 @@ public class KapcbAuthorizationServerConfiguration extends AuthorizationServerCo
     private final AuthenticationManager authenticationManager;
     private final UserDetailsService userDetailsService;
     private final RedisClientDetailServiceImpl redisClientDetailService;
+    private final AuthWebExceptionTranslator authWebExceptionTranslator;
     private final RedisAuthenticationCodeServiceImpl redisAuthenticationCodeService;
 
     @Override
@@ -40,16 +42,17 @@ public class KapcbAuthorizationServerConfiguration extends AuthorizationServerCo
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints.tokenStore(tokenStore())
                 .userDetailsService(userDetailsService)
                 .authorizationCodeServices(redisAuthenticationCodeService)
-                .authenticationManager(authenticationManager);
-//                .exceptionTranslator();
+                .authenticationManager(authenticationManager)
+                .exceptionTranslator(authWebExceptionTranslator);
     }
 
     @Bean
-    public TokenStore tokenStore(){
+    public TokenStore tokenStore() {
         return new TokenStore();
     }
 }
