@@ -9,17 +9,26 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
+import org.springframework.security.oauth2.provider.OAuth2RequestFactory;
+import org.springframework.security.oauth2.provider.password.ResourceOwnerPasswordTokenGranter;
+import org.springframework.security.oauth2.provider.request.DefaultOAuth2RequestFactory;
 import org.springframework.security.oauth2.provider.token.DefaultAccessTokenConverter;
+import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.DefaultUserAuthenticationConverter;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
+import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
+
+import java.util.UUID;
 
 /**
  * <a>Title: KapcbAuthorizationServerConfiguration </a>
@@ -37,10 +46,11 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 public class KapcbAuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
 
     private final AuthProperties authProperties;
-    private final AuthenticationManager authenticationManager;
     private final UserDetailsService userDetailsService;
-    private final RedisClientDetailServiceImpl redisClientDetailService;
+    private final AuthenticationManager authenticationManager;
+    private final RedisConnectionFactory redisConnectionFactory;
     private final AuthWebExceptionTranslator authWebExceptionTranslator;
+    private final RedisClientDetailServiceImpl redisClientDetailService;
     private final RedisAuthenticationCodeServiceImpl redisAuthenticationCodeService;
 
     @Override
@@ -65,9 +75,26 @@ public class KapcbAuthorizationServerConfiguration extends AuthorizationServerCo
     @Bean
     public TokenStore tokenStore() {
         if (authProperties.getEnableJwt()) {
+            log.info("enable jwt will enable jwt access token converter");
             return new JwtTokenStore(jwtAccessTokenConverter());
+        } else {
+            RedisTokenStore redisTokenStore = new RedisTokenStore(redisConnectionFactory);
+            String token = UUID.randomUUID().toString();
+            log.info("the generator oAuth2 Authentication token is : " + token);
+            redisTokenStore.setAuthenticationKeyGenerator(oAuth2Authentication -> token);
+            return redisTokenStore;
         }
-        return null;
+    }
+
+    @Bean
+    @Primary
+    public DefaultTokenServices defaultTokenServices() {
+        log.info("begin to auto configure default token service");
+        DefaultTokenServices defaultTokenServices = new DefaultTokenServices();
+        defaultTokenServices.setTokenStore(tokenStore());
+        defaultTokenServices.setSupportRefreshToken(Boolean.TRUE);
+        defaultTokenServices.setClientDetailsService(redisClientDetailService);
+        return defaultTokenServices;
     }
 
     @Bean
@@ -81,5 +108,21 @@ public class KapcbAuthorizationServerConfiguration extends AuthorizationServerCo
         defaultAccessTokenConverter.setUserTokenConverter(defaultUserAuthenticationConverter);
         jwtAccessTokenConverter.setSigningKey(authProperties.getJwtAccessKey());
         return jwtAccessTokenConverter;
+    }
+
+    @Bean
+    public ResourceOwnerPasswordTokenGranter resourceOwnerPasswordTokenGranter(AuthenticationManager authenticationManager, OAuth2RequestFactory oAuth2RequestFactory) {
+        log.info("begin to auto configure resources owner password token granter");
+        DefaultTokenServices defaultTokenServices = defaultTokenServices();
+        if (authProperties.getEnableJwt()) {
+            log.info("enable jwt will enable jwt access token converter");
+            defaultTokenServices.setTokenEnhancer(jwtAccessTokenConverter());
+        }
+        return new ResourceOwnerPasswordTokenGranter(authenticationManager, defaultTokenServices, redisClientDetailService, oAuth2RequestFactory);
+    }
+
+    @Bean
+    public DefaultOAuth2RequestFactory defaultOAuth2RequestFactory() {
+        return new DefaultOAuth2RequestFactory(redisClientDetailService);
     }
 }

@@ -2,10 +2,10 @@ package com.kapcb.ccc.auth.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.kapcb.ccc.auth.constants.AuthConstant;
-import com.kapcb.ccc.auth.service.RedisService;
-import lombok.RequiredArgsConstructor;
+import kapcb.framework.web.service.RedisService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.common.exceptions.InvalidClientException;
 import org.springframework.security.oauth2.provider.ClientDetails;
 import org.springframework.security.oauth2.provider.client.BaseClientDetails;
@@ -29,6 +29,7 @@ public class RedisClientDetailServiceImpl extends JdbcClientDetailsService {
 
     private final RedisService redisService;
 
+    @Autowired
     public RedisClientDetailServiceImpl(DataSource dataSource, RedisService redisService) {
         super(dataSource);
         this.redisService = redisService;
