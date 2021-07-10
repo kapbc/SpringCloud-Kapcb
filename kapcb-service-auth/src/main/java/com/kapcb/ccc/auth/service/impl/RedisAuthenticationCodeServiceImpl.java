@@ -1,13 +1,19 @@
 package com.kapcb.ccc.auth.service.impl;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.SerializationUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.lang.NonNull;
+import org.springframework.lang.Nullable;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.security.oauth2.provider.code.RandomValueAuthorizationCodeServices;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
+
+import java.nio.charset.StandardCharsets;
 
 /**
  * <a>Title: RedisAuthenticationCodeServiceImpl </a>
@@ -23,6 +29,8 @@ import org.springframework.util.Assert;
 @Service
 public class RedisAuthenticationCodeServiceImpl extends RandomValueAuthorizationCodeServices {
 
+    private static final String AUTH_CODE_KEY = "auth_code";
+
     private final RedisConnectionFactory redisConnectionFactory;
 
     public RedisAuthenticationCodeServiceImpl(@Autowired RedisConnectionFactory redisConnectionFactory) {
@@ -31,12 +39,41 @@ public class RedisAuthenticationCodeServiceImpl extends RandomValueAuthorization
     }
 
     @Override
-    protected void store(String s, OAuth2Authentication oAuth2Authentication) {
-
+    protected void store(String code, OAuth2Authentication oAuth2Authentication) {
+        RedisConnection redisConnection = getRedisConnection();
+        try {
+            Boolean result = redisConnection.hSet(AUTH_CODE_KEY.getBytes(StandardCharsets.UTF_8), code.getBytes(StandardCharsets.UTF_8), SerializationUtils.serialize(oAuth2Authentication));
+            log.info(result ? "save oauth2 authentication to redis server success!" : "save oauth2 authentication to redis server fail!");
+        } catch (Exception e) {
+            log.error("save oauth2 authentication to redis server fail! error message is : " + e.getMessage());
+        } finally {
+            redisConnection.close();
+        }
     }
 
+    @Nullable
     @Override
-    protected OAuth2Authentication remove(String s) {
-        return null;
+    protected OAuth2Authentication remove(@NonNull String code) {
+        RedisConnection redisConnection = getRedisConnection();
+        try {
+            byte[] bytes = redisConnection.hGet(AUTH_CODE_KEY.getBytes(StandardCharsets.UTF_8), code.getBytes(StandardCharsets.UTF_8));
+            if (bytes == null || ArrayUtils.isEmpty(bytes)) {
+                return null;
+            }
+            OAuth2Authentication oAuth2Authentication = SerializationUtils.deserialize(bytes);
+            if (oAuth2Authentication != null) {
+                redisConnection.hDel(AUTH_CODE_KEY.getBytes(StandardCharsets.UTF_8), code.getBytes(StandardCharsets.UTF_8));
+            }
+            return oAuth2Authentication;
+        } catch (Exception e) {
+            log.error("remove oauth2 authentication fail, error message is : " + e.getMessage());
+            return null;
+        } finally {
+            redisConnection.close();
+        }
+    }
+
+    private RedisConnection getRedisConnection() {
+        return redisConnectionFactory.getConnection();
     }
 }
