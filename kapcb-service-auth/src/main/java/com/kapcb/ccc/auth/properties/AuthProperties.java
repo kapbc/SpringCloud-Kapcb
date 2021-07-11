@@ -19,4 +19,6 @@ public class AuthProperties {
     private Boolean enableJwt = Boolean.FALSE;
 
     private String jwtAccessKey;
+
+    private VerificationCodeProperties verificationCode = new VerificationCodeProperties();
 }
