@@ -34,5 +34,5 @@ public interface VerificationCodeService {
      * @param key  String 前端传过来的 key
      * @param code String 用户输入的验证码
      */
-    void verifyCode(String key, String code);
+    void verifyCode(String key, String code) throws VerificationCodeException;
 }

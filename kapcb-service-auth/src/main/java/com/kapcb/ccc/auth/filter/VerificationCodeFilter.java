@@ -1,7 +1,18 @@
 package com.kapcb.ccc.auth.filter;
 
+import com.kapcb.ccc.auth.service.VerificationCodeService;
+import kapcb.framework.web.constants.enums.RequestParamEnum;
+import kapcb.framework.web.exception.VerificationCodeException;
+import kapcb.framework.web.model.base.BaseResult;
+import kapcb.framework.web.util.ResultUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.lang.NonNull;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.security.web.util.matcher.RequestMatcher;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -25,8 +36,30 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class VerificationCodeFilter extends OncePerRequestFilter {
 
-    @Override
-    protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
+    private final VerificationCodeService verificationCodeService;
 
+    @Override
+    protected void doFilterInternal(@NonNull HttpServletRequest httpServletRequest, @NonNull HttpServletResponse httpServletResponse, @NonNull FilterChain filterChain) throws ServletException, IOException {
+        String header = httpServletRequest.getHeader(HttpHeaders.AUTHORIZATION);
+        log.info("request authorization is {}", header);
+        RequestMatcher requestMatcher = new AntPathRequestMatcher("auth_token", HttpMethod.POST.name());
+        log.info("the request matcher is {} ", requestMatcher);
+        boolean matches = requestMatcher.matches(httpServletRequest);
+        boolean password = StringUtils.equalsAnyIgnoreCase(httpServletRequest.getParameter(RequestParamEnum.AUTHENTICATION_GRANT_TYPE.value()), "password");
+        if (matches && password) {
+            try {
+                validationCode(httpServletRequest);
+                filterChain.doFilter(httpServletRequest, httpServletResponse);
+            } catch (Exception e) {
+                ResultUtil.setUpFailureResponse(httpServletResponse, BaseResult.fail(e.getMessage()));
+                log.error(e.getMessage(), e);
+            }
+        } else {
+            filterChain.doFilter(httpServletRequest, httpServletResponse);
+        }
+    }
+
+    private void validationCode(HttpServletRequest httpServletRequest) throws VerificationCodeException {
+        verificationCodeService.verifyCode(httpServletRequest.getParameter(RequestParamEnum.VERIFICATION_CODE_KEY.value()), httpServletRequest.getParameter(RequestParamEnum.VERIFICATION_CODE_CODE.value()));
     }
 }

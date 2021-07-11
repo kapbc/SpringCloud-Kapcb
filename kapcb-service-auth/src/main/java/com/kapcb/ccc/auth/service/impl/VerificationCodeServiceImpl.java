@@ -54,7 +54,7 @@ public class VerificationCodeServiceImpl implements VerificationCodeService {
     }
 
     @Override
-    public void verifyCode(String key, @Nullable String code) {
+    public void verifyCode(String key, @Nullable String code) throws VerificationCodeException {
         if (StringUtils.isBlank(code)) {
             throw new VerificationCodeException("Please input the verification code!");
         }
