@@ -6,6 +6,9 @@ import com.kapcb.ccc.auth.service.VerificationCodeService;
 import com.kapcb.ccc.auth.utils.EasyCaptchaUtil;
 import com.wf.captcha.base.Captcha;
 import io.vavr.Tuple;
+import io.vavr.Tuple1;
+import io.vavr.Tuple3;
+import io.vavr.Tuple4;
 import io.vavr.Tuple5;
 import kapcb.framework.web.constants.enums.RequestParamEnum;
 import kapcb.framework.web.exception.VerificationCodeException;
@@ -47,19 +50,18 @@ public class VerificationCodeServiceImpl implements VerificationCodeService {
         if (StringUtils.isBlank(verificationCode)) {
             throw new VerificationCodeException("verification code can not be null");
         }
-        VerificationCodeProperties verificationCodeProperties = authProperties.getVerificationCode();
-        Tuple5<String, Integer, Integer, Integer, Integer> codeToTuple = verificationCodeToTuple(authProperties.getVerificationCode());
-        ResponseUtil.setHeader(httpServletResponse, codeToTuple._1);
+        Tuple3<Tuple1<String>, Tuple4<Integer, Integer, Integer, Integer>, Tuple1<Long>> codeToTuple = verificationCodeToTuple(authProperties.getVerificationCode());
+        ResponseUtil.setHeader(httpServletResponse, codeToTuple._1._1);
 
-        Captcha captcha = EasyCaptchaUtil.createCaptcha(codeToTuple);
-        redisService.set("verification" + verificationCode, StringUtils.lowerCase(captcha.text()), verificationCodeProperties.getTime());
+        Captcha captcha = EasyCaptchaUtil.createCaptcha(codeToTuple._1._1, codeToTuple._2);
+        redisService.set("verification" + verificationCode, StringUtils.lowerCase(captcha.text()), codeToTuple._3._1);
         captcha.out(httpServletResponse.getOutputStream());
         return true;
     }
 
     @NonNull
-    private Tuple5<String, Integer, Integer, Integer, Integer> verificationCodeToTuple(@NonNull VerificationCodeProperties codeProperties) {
-        return Tuple.of(codeProperties.getType(), codeProperties.getWidth(), codeProperties.getHeight(), codeProperties.getLength(), codeProperties.getCharType());
+    private Tuple3<Tuple1<String>, Tuple4<Integer, Integer, Integer, Integer>, Tuple1<Long>> verificationCodeToTuple(@NonNull VerificationCodeProperties codeProperties) {
+        return Tuple.of(Tuple.of(codeProperties.getType()), Tuple.of(codeProperties.getWidth(), codeProperties.getHeight(), codeProperties.getLength(), codeProperties.getCharType()), Tuple.of(codeProperties.getTime()));
     }
 
     @Override

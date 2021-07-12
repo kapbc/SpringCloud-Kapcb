@@ -3,6 +3,7 @@ package com.kapcb.ccc.auth.utils;
 import com.wf.captcha.GifCaptcha;
 import com.wf.captcha.SpecCaptcha;
 import com.wf.captcha.base.Captcha;
+import io.vavr.Tuple4;
 import io.vavr.Tuple5;
 import kapcb.framework.web.constants.enums.Image;
 import lombok.extern.slf4j.Slf4j;
@@ -27,15 +28,26 @@ public class EasyCaptchaUtil {
     private EasyCaptchaUtil() {
     }
 
-    public static Captcha createCaptcha(@NonNull Tuple5<String, Integer, Integer, Integer, Integer> codeToTuple) {
-        Captcha captcha = matchCaptcha(codeToTuple);
-        captcha.setCharType(codeToTuple._5);
+    /**
+     * Tuple4:
+     * Width
+     * Height
+     * Length
+     * CharType
+     *
+     * @param type      String
+     * @param codeTuple Tuple4
+     * @return Captcha
+     */
+    public static Captcha createCaptcha(String type, Tuple4<Integer, Integer, Integer, Integer> codeTuple) {
+        Captcha captcha = matchCaptcha(type, codeTuple);
+        captcha.setCharType(codeTuple._4);
         return captcha;
     }
 
-    private static Captcha matchCaptcha(Tuple5<String, Integer, Integer, Integer, Integer> codeToTuple) {
-        return Match(codeToTuple._1).of(
-                Case($(Image.Type.GIF.type()), new GifCaptcha(codeToTuple._2, codeToTuple._3, codeToTuple._4)),
-                Case($(Image.Type.GIF.type()), new SpecCaptcha(codeToTuple._2, codeToTuple._3, codeToTuple._4)));
+    private static Captcha matchCaptcha(String type, Tuple4<Integer, Integer, Integer, Integer> codeTuple) {
+        return Match(type).of(
+                Case($(Image.Type.GIF.type()), new GifCaptcha(codeTuple._1, codeTuple._2, codeTuple._3)),
+                Case($(Image.Type.GIF.type()), new SpecCaptcha(codeTuple._1, codeTuple._2, codeTuple._3)));
     }
 }
