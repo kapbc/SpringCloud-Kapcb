@@ -5,6 +5,8 @@ import com.kapcb.ccc.auth.properties.VerificationCodeProperties;
 import com.kapcb.ccc.auth.service.VerificationCodeService;
 import com.kapcb.ccc.auth.utils.EasyCaptchaUtil;
 import com.wf.captcha.base.Captcha;
+import io.vavr.Tuple;
+import io.vavr.Tuple5;
 import kapcb.framework.web.constants.enums.RequestParamEnum;
 import kapcb.framework.web.exception.VerificationCodeException;
 import kapcb.framework.web.service.RedisService;
@@ -12,6 +14,7 @@ import kapcb.framework.web.util.ResponseUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
 
@@ -45,12 +48,18 @@ public class VerificationCodeServiceImpl implements VerificationCodeService {
             throw new VerificationCodeException("verification code can not be null");
         }
         VerificationCodeProperties verificationCodeProperties = authProperties.getVerificationCode();
-        ResponseUtil.setHeader(httpServletResponse, verificationCodeProperties.getType());
+        Tuple5<String, Integer, Integer, Integer, Integer> codeToTuple = verificationCodeToTuple(authProperties.getVerificationCode());
+        ResponseUtil.setHeader(httpServletResponse, codeToTuple._1);
 
-        Captcha captcha = EasyCaptchaUtil.createCaptcha(verificationCodeProperties.getType(), verificationCodeProperties.getWidth(), verificationCodeProperties.getHeight(), verificationCodeProperties.getLength(), verificationCodeProperties.getCharType());
+        Captcha captcha = EasyCaptchaUtil.createCaptcha(codeToTuple);
         redisService.set("verification" + verificationCode, StringUtils.lowerCase(captcha.text()), verificationCodeProperties.getTime());
         captcha.out(httpServletResponse.getOutputStream());
         return true;
+    }
+
+    @NonNull
+    private Tuple5<String, Integer, Integer, Integer, Integer> verificationCodeToTuple(@NonNull VerificationCodeProperties codeProperties) {
+        return Tuple.of(codeProperties.getType(), codeProperties.getWidth(), codeProperties.getHeight(), codeProperties.getLength(), codeProperties.getCharType());
     }
 
     @Override

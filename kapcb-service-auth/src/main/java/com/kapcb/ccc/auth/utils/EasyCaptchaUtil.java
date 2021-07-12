@@ -3,6 +3,7 @@ package com.kapcb.ccc.auth.utils;
 import com.wf.captcha.GifCaptcha;
 import com.wf.captcha.SpecCaptcha;
 import com.wf.captcha.base.Captcha;
+import io.vavr.Tuple5;
 import kapcb.framework.web.constants.enums.Image;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.lang.NonNull;
@@ -26,15 +27,15 @@ public class EasyCaptchaUtil {
     private EasyCaptchaUtil() {
     }
 
-    public static Captcha createCaptcha(@NonNull String imageType, @NonNull Integer width, @NonNull Integer height, @NonNull Integer length, @NonNull Integer charType) {
-        Captcha captcha = matchCaptcha(imageType, width, height, length);
-        captcha.setCharType(charType);
+    public static Captcha createCaptcha(@NonNull Tuple5<String, Integer, Integer, Integer, Integer> codeToTuple) {
+        Captcha captcha = matchCaptcha(codeToTuple);
+        captcha.setCharType(codeToTuple._5);
         return captcha;
     }
 
-    private static Captcha matchCaptcha(String imageType, Integer width, Integer height, Integer length) {
-        return Match(imageType).of(
-                Case($(Image.Type.GIF.type()), new GifCaptcha(width, height, length)),
-                Case($(Image.Type.GIF.type()), new SpecCaptcha(width, height, length)));
+    private static Captcha matchCaptcha(Tuple5<String, Integer, Integer, Integer, Integer> codeToTuple) {
+        return Match(codeToTuple._1).of(
+                Case($(Image.Type.GIF.type()), new GifCaptcha(codeToTuple._2, codeToTuple._3, codeToTuple._4)),
+                Case($(Image.Type.GIF.type()), new SpecCaptcha(codeToTuple._2, codeToTuple._3, codeToTuple._4)));
     }
 }
