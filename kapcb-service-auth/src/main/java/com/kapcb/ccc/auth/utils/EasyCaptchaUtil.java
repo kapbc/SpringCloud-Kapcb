@@ -4,10 +4,8 @@ import com.wf.captcha.GifCaptcha;
 import com.wf.captcha.SpecCaptcha;
 import com.wf.captcha.base.Captcha;
 import io.vavr.Tuple4;
-import io.vavr.Tuple5;
 import kapcb.framework.web.constants.enums.Image;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.lang.NonNull;
 
 import static io.vavr.API.$;
 import static io.vavr.API.Case;
