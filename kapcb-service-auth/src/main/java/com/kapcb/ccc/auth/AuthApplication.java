@@ -28,4 +28,5 @@ public class AuthApplication {
                 .bannerMode(Banner.Mode.OFF)
                 .run(args);
     }
+    
 }
