@@ -27,6 +27,5 @@ public class AuthApplication {
                 .web(WebApplicationType.SERVLET)
                 .bannerMode(Banner.Mode.OFF)
                 .run(args);
-    }
-    
+    }    
 }
